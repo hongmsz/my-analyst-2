@@ -322,6 +322,13 @@ private void createContentsContainer(){
 	public class testView extends View {
     	int thr = 0;
 
+		Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.vb_logo);
+		Bitmap Bg_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_m);
+	    Bitmap Icon_soff = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_us);
+	    Bitmap Nav_c = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_c);
+	    Bitmap Nav_R = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_r);
+	    Bitmap Nav_L = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_l);
+	    
     	public testView(Context context)
     	{
     		super(context);
@@ -346,12 +353,6 @@ private void createContentsContainer(){
     			W_24.setTextSize(20);
     		W_24.setAntiAlias(true);
     		
-    		Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.vb_logo);
-    		Bitmap Bg_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_m);
-    	    Bitmap Icon_soff = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_us);
-    	    Bitmap Nav_c = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_c);
-    	    Bitmap Nav_R = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_r);
-    	    Bitmap Nav_L = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.nav_l);
     		
     		canvas.drawBitmap(Icon_m, 0, 10, B_24);
     		switch(GV.getOptD().dType){

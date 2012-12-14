@@ -419,35 +419,41 @@ public class ContentsActivity extends Activity {
 	        			break;
         		}
     		}else if(MyApp.getSR() == 1){
-    			canvas.drawBitmap(mBG1, src, dst, pnt);
+//    			canvas.drawBitmap(mBG1, src, dst, pnt);
+    			canvas.drawBitmap(mBG1, 0, 0, pnt);
 //				canvas.drawText(menu11, 50, 275, pnt2);
 //				canvas.drawText(menu12, 50, 335, pnt2);
 //				canvas.drawText(menu13, 50, 395, pnt2);
 //				canvas.drawText(menu14, 50, 455, pnt2);
 //				canvas.drawText(menu15, 50, 515, pnt2);
     		}else if(MyApp.getSR() == 2){
-    			canvas.drawBitmap(mBG2, src, dst, pnt);
+//    			canvas.drawBitmap(mBG2, src, dst, pnt);
+    			canvas.drawBitmap(mBG2, 0, 0, pnt);
 //				canvas.drawText(menu21, 50, 275, pnt2);
 //				canvas.drawText(menu22, 50, 335, pnt2);
 //				canvas.drawText(menu23, 50, 395, pnt2);
 //				canvas.drawText(menu24, 50, 455, pnt2);
     		}else if(MyApp.getSR() == 3){
-    			canvas.drawBitmap(mBG3, src, dst, pnt);
+//    			canvas.drawBitmap(mBG3, src, dst, pnt);
+    			canvas.drawBitmap(mBG3, 0, 0, pnt);
 //				canvas.drawText(menu31, 50, 275, pnt2);
 //				canvas.drawText(menu32, 50, 335, pnt2);
 //				canvas.drawText(menu33, 50, 395, pnt2);
     		}else if(MyApp.getSR() == 4){
-    			canvas.drawBitmap(mBG4, src, dst, pnt);
+//    			canvas.drawBitmap(mBG4, src, dst, pnt);
+    			canvas.drawBitmap(mBG4, 0, 0, pnt);
 //				canvas.drawText(menu41, 50, 275, pnt2);
 //				canvas.drawText(menu42, 50, 335, pnt2);
 //				canvas.drawText(menu43, 50,395, pnt2);
     		}else if(MyApp.getSR() == 5){
-    			canvas.drawBitmap(mBG5, src, dst, pnt);
+//    			canvas.drawBitmap(mBG5, src, dst, pnt);
+    			canvas.drawBitmap(mBG5, 0, 0, pnt);
 //				canvas.drawText(menu51, 50, 275, pnt2);
 //				canvas.drawText(menu52, 50, 335, pnt2);
 //				canvas.drawText(menu53, 50, 395, pnt2);
     		}else if(MyApp.getSR() == 6){
-    			canvas.drawBitmap(mBG6, src, dst, pnt);
+//    			canvas.drawBitmap(mBG6, src, dst, pnt);
+    			canvas.drawBitmap(mBG6, 0, 0, pnt);
 //				canvas.drawText(menu61, 50, 275, pnt2);
 //				canvas.drawText(menu62, 50, 335, pnt2);
     		}

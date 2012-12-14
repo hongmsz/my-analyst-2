@@ -38,6 +38,7 @@ public class ContentsActivity extends Activity {
     testView test;
     Intent Cmenu1, Cmenu2, Cmenu3, Cmenu4, Cmenu5, Cmenu6;     
     float x1, y1;
+    int tmp_sel = 0;
     
 
 	int width, height;
@@ -84,6 +85,8 @@ public class ContentsActivity extends Activity {
 		
 		GV.setDisplay(((WindowManager)this.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay());
 		
+		
+		
 		width = GV.getDisplay().getWidth();
 		height= GV.getDisplay().getHeight();
 		
@@ -125,8 +128,32 @@ public class ContentsActivity extends Activity {
 //    	test.animate(test);
     	
     	test.setOnTouchListener(new OnTouchListener(){
-        	 public boolean onTouch(View arg0, MotionEvent event) {               
-                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        	 public boolean onTouch(View arg0, MotionEvent event) {            
+        		 if (event.getAction() == MotionEvent.ACTION_DOWN) {
+        			 x1=event.getX();
+                	 y1=event.getY();
+        			 
+        			 if(x1 > MyApp.getDisplay().getWidth()*0.07 && x1 < MyApp.getDisplay().getWidth()*0.46){
+            			 if(y1 > MyApp.getDisplay().getHeight()*0.13 && y1 < MyApp.getDisplay().getHeight()*0.36){
+            				 tmp_sel = 1;
+            			 }else if(y1 > MyApp.getDisplay().getHeight()*0.41 && y1 < MyApp.getDisplay().getHeight()*0.64){
+            				 tmp_sel = 3;
+            			 }else if(y1 > MyApp.getDisplay().getHeight()*0.69 && y1 < MyApp.getDisplay().getHeight()*0.92){
+            				 tmp_sel = 5;
+            			 } 
+            		 }else if(x1 > MyApp.getDisplay().getWidth()*0.55 && x1 < MyApp.getDisplay().getWidth()*0.93){
+            			 if(y1 > MyApp.getDisplay().getHeight()*0.13 && y1 < MyApp.getDisplay().getHeight()*0.36){
+            				 tmp_sel = 2;
+            			 }else if(y1 > MyApp.getDisplay().getHeight()*0.41 && y1 < MyApp.getDisplay().getHeight()*0.64){
+            				 tmp_sel = 4;
+            			 }else if(y1 > MyApp.getDisplay().getHeight()*0.69 && y1 < MyApp.getDisplay().getHeight()*0.92){
+            				 tmp_sel = 6;
+            			 } 
+            		 }
+    				 test.invalidate();
+        			 
+                 }else if (event.getAction() == MotionEvent.ACTION_UP) {
+                	 tmp_sel = 0;
                 	 x1=event.getX();
                 	 y1=event.getY();
 //MyApp.getDisplay().getWidth()-nSearch.getWidth()-35, 25
@@ -325,6 +352,23 @@ public class ContentsActivity extends Activity {
     	Paint pnt = new Paint();
     	Paint pnt2 = new Paint();
     	
+    	Bitmap vBG = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.bg_list_view);
+		Bitmap sBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_1);
+		Bitmap sBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_2);
+		Bitmap sBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_3);
+		Bitmap sBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_4);
+		Bitmap sBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_5);
+		Bitmap sBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_6);
+		Bitmap nSearch = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_i);
+		Bitmap mBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_1);
+		Bitmap mBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_2);
+		Bitmap mBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_3);
+		Bitmap mBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_4);
+		Bitmap mBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_5);
+		Bitmap mBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_6);
+
+		Bitmap vName = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.kname);
+    	
     	
     	public testView(Context context)
     	{
@@ -346,17 +390,6 @@ public class ContentsActivity extends Activity {
     		pnt.setAntiAlias(true);
     		pnt2.setAntiAlias(true);
     		
-    		Bitmap vBG = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.bg_list_view);
-    		Bitmap nSearch = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_i);
-    		Bitmap mBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_1);
-    		Bitmap mBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_2);
-    		Bitmap mBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_3);
-    		Bitmap mBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_4);
-    		Bitmap mBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_5);
-    		Bitmap mBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_6);
-
-    		Bitmap vName = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.kname);
-    		
     		Rect src = new Rect(0,0,mBG1.getWidth(),mBG1.getHeight());
     		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),MyApp.getDisplay().getHeight());
 
@@ -365,6 +398,26 @@ public class ContentsActivity extends Activity {
         		canvas.drawBitmap(nSearch, MyApp.getDisplay().getWidth()-nSearch.getWidth()-35, 25, pnt);
 //    			canvas.drawBitmap(vBG, src, dst, pnt);
         		canvas.drawBitmap(vBG, 0, 0, pnt);
+        		switch(tmp_sel){
+	        		case 1:
+	        			canvas.drawBitmap(sBG1, 0, 0, pnt);
+	        			break;
+	        		case 2:
+	        			canvas.drawBitmap(sBG2, 0, 0, pnt);
+	        			break;
+	        		case  3:
+	        			canvas.drawBitmap(sBG3, 0, 0, pnt);
+	        			break;
+	        		case  4:
+	        			canvas.drawBitmap(sBG4, 0, 0, pnt);
+	        			break;
+	        		case  5:
+	        			canvas.drawBitmap(sBG5, 0, 0, pnt);
+	        			break;
+	        		case  6:
+	        			canvas.drawBitmap(sBG6, 0, 0, pnt);
+	        			break;
+        		}
     		}else if(MyApp.getSR() == 1){
     			canvas.drawBitmap(mBG1, src, dst, pnt);
 //				canvas.drawText(menu11, 50, 275, pnt2);

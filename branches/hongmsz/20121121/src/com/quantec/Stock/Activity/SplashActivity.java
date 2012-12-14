@@ -85,6 +85,11 @@ public class SplashActivity extends Activity {
 	public class testView extends View 
     {
 		Paint pnt = new Paint();
+		
+
+		Bitmap map001 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.b_logo);
+		Bitmap map002 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.loading02);
+		
     	
     	int thr = 0;
     	float rLoad;
@@ -106,9 +111,6 @@ public class SplashActivity extends Activity {
 				t_height = GV.getDisplay().getHeight()+96;
 			else
 				t_height = GV.getDisplay().getHeight();
-    		
-    		Bitmap map001 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.b_logo);
-    		Bitmap map002 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.loading02);
     		
     		Rect src = new Rect(0,0,map001.getWidth(),map001.getHeight());
     		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),t_height);
@@ -134,7 +136,7 @@ public class SplashActivity extends Activity {
     			    	 
     					tmp.postInvalidate();
     					try {
-    						Thread.sleep(50);
+    						Thread.sleep(100);
     					} catch (InterruptedException e) {
     						e.printStackTrace();
     					}

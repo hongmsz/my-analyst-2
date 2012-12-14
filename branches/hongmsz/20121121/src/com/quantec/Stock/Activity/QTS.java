@@ -262,11 +262,12 @@ public class QTS extends Activity {
         test.setOnTouchListener(new OnTouchListener(){
     		public boolean onTouch(View arg0, MotionEvent event) {
     			if (event.getAction() == MotionEvent.ACTION_DOWN) {
+    				
+                }    			
+    			if (event.getAction() == MotionEvent.ACTION_UP) {
+
         			x1=event.getX();
         			y1=event.getY();
-                }
-    			
-    			if (event.getAction() == MotionEvent.ACTION_UP) {
 //    				sub_menu = 0;
 //    				setAd.invalidate();
     			}
@@ -1171,6 +1172,7 @@ public class QTS extends Activity {
     
 	public class testView extends View {
     	int thr = 0;
+		Bitmap vLogo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.vb_logo);
     	
     	Paint pnt = new Paint();
     	
@@ -1184,7 +1186,6 @@ public class QTS extends Activity {
     	public void onDraw(Canvas canvas){
     		pnt.setColor(Color.BLACK);
     		
-    		Bitmap vLogo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.vb_logo);
     		canvas.drawBitmap(vLogo, MyApp.getDisplay().getWidth()/2-vLogo.getWidth()/2, 25, pnt);
     		
     	}
@@ -1219,7 +1220,20 @@ public class QTS extends Activity {
     	
     	static final int MAX_AD_NUM = 3;
     	
-    	Bitmap vLogo;
+    	Bitmap vLogo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.b_bg);    	
+
+//	    Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.hint_m);
+	    Bitmap Icon_t1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_icon_3);
+	    Bitmap Icon_t2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_icon_4);
+	    Bitmap Icon_t3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_s);
+	    Bitmap Icon_t4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.d_menu);
+//	    Bitmap Icon_t4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_l);
+	    Bitmap Icon_soff = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_us);
+	    Bitmap Icon_son = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_s);
+	    Bitmap M_ss = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m_select_s);
+	    Bitmap M_sl = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m_select_l);
+	    Bitmap Pnter = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.pnt1);
+	    
     	
     	int ad_num = 1;
     	
@@ -1238,7 +1252,7 @@ public class QTS extends Activity {
     		pnt.setColor(Color.BLACK);
     		pnt2.setAlpha(200);
     		
-   			vLogo = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.b_bg);
+   			
    			int t_height;
     		
    			if(GV.getDisplay().getWidth() > 700)
@@ -1268,18 +1282,6 @@ public class QTS extends Activity {
     	    G_24.setColor(0xff777777);
     	    G_24.setAlpha(50);
 
-//    	    Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.hint_m);
-    	    Bitmap Icon_t1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_icon_3);
-    	    Bitmap Icon_t2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_icon_4);
-    	    Bitmap Icon_t3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_s);
-    	    Bitmap Icon_t4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.d_menu);
-//    	    Bitmap Icon_t4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s_menu_l);
-    	    Bitmap Icon_soff = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_us);
-    	    Bitmap Icon_son = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ch_s);
-    	    Bitmap M_ss = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m_select_s);
-    	    Bitmap M_sl = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m_select_l);
-    	    Bitmap Pnter = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.pnt1);
-    	    
     	    Rect src2 = new Rect(0,0,Icon_t4.getWidth(),Icon_t4.getHeight());
      		Rect dst2 = new Rect(width*4/9, (int)(menu_pos+menu_dist), width, (int)(menu_pos+menu_dist*7));
         	    	    

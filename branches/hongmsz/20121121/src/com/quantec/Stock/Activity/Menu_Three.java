@@ -307,6 +307,30 @@ public class Menu_Three extends Activity{
 	public class testView extends View {
 		int thr = 0;
 
+		Bitmap map001 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.h_bg);
+		Bitmap map003 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.seach_l);
+		Bitmap map006 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.help);
+		Bitmap map004 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_03);
+		Bitmap map007 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_05);
+		Bitmap map008 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_10);
+		Bitmap map009 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_03);
+		Bitmap map010 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_05);
+		Bitmap map011 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_10);
+		Bitmap map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m3);
+		Bitmap map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm3);
+		Bitmap map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm3);
+
+		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // 주가 변동 추세
+
+		Bitmap c01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_up);
+		Bitmap c02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_mid);
+		Bitmap c03 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_down);
+		
+		Bitmap ci01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_up);
+		Bitmap ci02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_mid);
+		Bitmap ci03 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_down);
+		
+
     	ShapeDrawable _Drawable = new ShapeDrawable(new OvalShape());
     	ShapeDrawable _Drawable2 = new ShapeDrawable(new OvalShape());
     	
@@ -392,29 +416,6 @@ public class Menu_Three extends Activity{
     		B_18.setAntiAlias(true);
     		W_18.setAntiAlias(true);
     		B_24.setAntiAlias(true);
-    		
-    		Bitmap map001 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.h_bg);
-    		Bitmap map003 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.seach_l);
-    		Bitmap map006 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.help);
-    		Bitmap map004 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_03);
-    		Bitmap map007 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_05);
-    		Bitmap map008 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.off_10);
-    		Bitmap map009 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_03);
-    		Bitmap map010 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_05);
-    		Bitmap map011 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_10);
-    		Bitmap map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m3);
-    		Bitmap map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm3);
-    		Bitmap map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm3);
-
-    		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // 주가 변동 추세
-
-    		Bitmap c01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_up);
-    		Bitmap c02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_mid);
-    		Bitmap c03 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_down);
-    		
-    		Bitmap ci01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_up);
-    		Bitmap ci02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_mid);
-    		Bitmap ci03 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_down);
     		
     		Rect src = new Rect(0,0,map001.getWidth(),map001.getHeight());
     		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),MyApp.getDisplay().getHeight());

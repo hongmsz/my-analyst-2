@@ -51,6 +51,7 @@ public class Menu_One extends Activity {
     float x1, y1, x2, y2;
     int tmp_v;
     int duration;
+    int[] qt_tmp = new int[43];
     
     int sub_menu = 0;
     int opt_dur=1;
@@ -533,6 +534,13 @@ public class Menu_One extends Activity {
 	    			for(int dx = 0; dx< duration; dx++){
 						posX[dx] = (float)(width-width*0.15f)/(float)(duration)*dx + width*0.075f  /* */ - (float)(width-width*0.15f)/(float)((duration+1)*12-1)*dur2;
 	    			}
+	    			
+	    			for(int dx = 0; dx< duration; dx++){
+	    				if(GV.getStockD().m_quarter[0]%4 == 0){
+	    					qt_tmp[dx] = GV.getStockD().m_quarter[0];
+	    				}
+	    			}	    			
+	    			
 	    			for(int dx = 0; dx< duration; dx++){
 						if(GV.getStockD().m_quarter[duration - dx-1]%4 == 1 && posX[dx] > width*0.067f){
 							canvas.drawText(Y_count+"", posX[dx], height*0.77f+15*c_height, W_18);

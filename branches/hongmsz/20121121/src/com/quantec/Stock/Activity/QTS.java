@@ -1263,8 +1263,8 @@ public class QTS extends Activity {
        		Rect src = new Rect(0,0,vLogo.getWidth(),vLogo.getHeight());
        		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),t_height);
         	
-//    		canvas.drawBitmap(vLogo, src, dst, pnt);
-       		canvas.drawBitmap(vLogo, 0, 0, pnt);
+    		canvas.drawBitmap(vLogo, src, dst, pnt);
+//       		canvas.drawBitmap(vLogo, 0, 0, pnt);
     		
     		W_30.setColor(Color.WHITE);
     		if(width>480)
@@ -1418,13 +1418,9 @@ public class QTS extends Activity {
 //    		if(op_out.equals(String.format("%.3f", Float.valueOf(version)))){
             if(Float.valueOf(op_out).floatValue() <= Float.valueOf(version)){
     			update.setTitle("※ 버전 "+String.format("%.3f", Float.valueOf(version))+" 업데이트 내용");
-	    		update.setMessage("이번 업데이트를 통해 기존 마이 애널리스의 전반적인 기능 및 인터페이스를 수정했습니다!!\n" +
-	    				"이번 업데이트 중 가장 많은 수정이 이루어진 부분은 아래와 같습니다.\n\n" +
-	    				"1. 화면 표시 속도 개선\n" +
-	    				"  - 메뉴 선택, 전환 시 화면 응답 속도가 개선되었습니다.\n\n"+
-	    				"2. 인터페이스 개선\n" +
-	    				"  - 메뉴, 옵션 등을 확인하기 쉽도록 화면 인터페이스를 개선했습니다.\n\n" +
-	    				"3. 오류 수정");
+	    		update.setMessage("이번 업데이트를 통해 수정이 이루어진 부분은 아래와 같습니다.\n\n" +
+	    				"1. 메모리 부족 현상 해결\n" +
+	    				"  - 종목 검색 후 일부 기종에서 강제 종료가 되는 문제 해결.");
 	    		update.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {

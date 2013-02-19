@@ -353,20 +353,13 @@ public class ContentsActivity extends Activity {
     	Paint pnt2 = new Paint();
     	
     	Bitmap vBG = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.bg_list_view);
+    	Bitmap nSearch = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_i);
 		Bitmap sBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_1);
 		Bitmap sBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_2);
 		Bitmap sBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_3);
 		Bitmap sBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_4);
 		Bitmap sBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_5);
 		Bitmap sBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.list_sel_6);
-		Bitmap nSearch = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_i);
-		Bitmap mBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_1);
-		Bitmap mBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_2);
-		Bitmap mBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_3);
-		Bitmap mBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_4);
-		Bitmap mBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_5);
-		Bitmap mBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_6);
-
 		Bitmap vName = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.kname);
     	
     	
@@ -390,70 +383,80 @@ public class ContentsActivity extends Activity {
     		pnt.setAntiAlias(true);
     		pnt2.setAntiAlias(true);
     		
-    		Rect src = new Rect(0,0,mBG1.getWidth(),mBG1.getHeight());
+
+    		Bitmap mBG1, mBG2, mBG3, mBG4, mBG5, mBG6;
+
+    		
+    		Rect src = new Rect(0,0,vBG.getWidth(),vBG.getHeight());
     		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),MyApp.getDisplay().getHeight());
 
     		if(MyApp.getSR() == 0){
     			canvas.drawRect(0, 0, MyApp.getDisplay().getWidth(), MyApp.getDisplay().getHeight(),pnt);
         		canvas.drawBitmap(nSearch, MyApp.getDisplay().getWidth()-nSearch.getWidth()-35, 25, pnt);
-//    			canvas.drawBitmap(vBG, src, dst, pnt);
-        		canvas.drawBitmap(vBG, 0, 0, pnt);
+    			canvas.drawBitmap(vBG, src, dst, pnt);
+//        		canvas.drawBitmap(vBG, 0, 0, pnt);
         		switch(tmp_sel){
 	        		case 1:
-	        			canvas.drawBitmap(sBG1, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG1, src, dst, pnt);
 	        			break;
 	        		case 2:
-	        			canvas.drawBitmap(sBG2, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG2, src, dst, pnt);
 	        			break;
 	        		case  3:
-	        			canvas.drawBitmap(sBG3, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG3, src, dst, pnt);
 	        			break;
 	        		case  4:
-	        			canvas.drawBitmap(sBG4, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG4, src, dst, pnt);
 	        			break;
 	        		case  5:
-	        			canvas.drawBitmap(sBG5, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG5, src, dst, pnt);
 	        			break;
 	        		case  6:
-	        			canvas.drawBitmap(sBG6, 0, 0, pnt);
+	        			canvas.drawBitmap(sBG6, src, dst, pnt);
 	        			break;
         		}
     		}else if(MyApp.getSR() == 1){
-//    			canvas.drawBitmap(mBG1, src, dst, pnt);
-    			canvas.drawBitmap(mBG1, 0, 0, pnt);
+    			mBG1 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_1);
+    			canvas.drawBitmap(mBG1, src, dst, pnt);
+//    			canvas.drawBitmap(mBG1, 0, 0, pnt);
 //				canvas.drawText(menu11, 50, 275, pnt2);
 //				canvas.drawText(menu12, 50, 335, pnt2);
 //				canvas.drawText(menu13, 50, 395, pnt2);
 //				canvas.drawText(menu14, 50, 455, pnt2);
 //				canvas.drawText(menu15, 50, 515, pnt2);
     		}else if(MyApp.getSR() == 2){
-//    			canvas.drawBitmap(mBG2, src, dst, pnt);
-    			canvas.drawBitmap(mBG2, 0, 0, pnt);
+    			mBG2 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_2);
+    			canvas.drawBitmap(mBG2, src, dst, pnt);
+//    			canvas.drawBitmap(mBG2, 0, 0, pnt);
 //				canvas.drawText(menu21, 50, 275, pnt2);
 //				canvas.drawText(menu22, 50, 335, pnt2);
 //				canvas.drawText(menu23, 50, 395, pnt2);
 //				canvas.drawText(menu24, 50, 455, pnt2);
     		}else if(MyApp.getSR() == 3){
-//    			canvas.drawBitmap(mBG3, src, dst, pnt);
-    			canvas.drawBitmap(mBG3, 0, 0, pnt);
+    			mBG3 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_3);
+    			canvas.drawBitmap(mBG3, src, dst, pnt);
+//    			canvas.drawBitmap(mBG3, 0, 0, pnt);
 //				canvas.drawText(menu31, 50, 275, pnt2);
 //				canvas.drawText(menu32, 50, 335, pnt2);
 //				canvas.drawText(menu33, 50, 395, pnt2);
     		}else if(MyApp.getSR() == 4){
-//    			canvas.drawBitmap(mBG4, src, dst, pnt);
-    			canvas.drawBitmap(mBG4, 0, 0, pnt);
+    			mBG4 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_4);
+    			canvas.drawBitmap(mBG4, src, dst, pnt);
+//    			canvas.drawBitmap(mBG4, 0, 0, pnt);
 //				canvas.drawText(menu41, 50, 275, pnt2);
 //				canvas.drawText(menu42, 50, 335, pnt2);
 //				canvas.drawText(menu43, 50,395, pnt2);
     		}else if(MyApp.getSR() == 5){
-//    			canvas.drawBitmap(mBG5, src, dst, pnt);
-    			canvas.drawBitmap(mBG5, 0, 0, pnt);
+    			mBG5 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_5);
+    			canvas.drawBitmap(mBG5, src, dst, pnt);
+//    			canvas.drawBitmap(mBG5, 0, 0, pnt);
 //				canvas.drawText(menu51, 50, 275, pnt2);
 //				canvas.drawText(menu52, 50, 335, pnt2);
 //				canvas.drawText(menu53, 50, 395, pnt2);
     		}else if(MyApp.getSR() == 6){
-//    			canvas.drawBitmap(mBG6, src, dst, pnt);
-    			canvas.drawBitmap(mBG6, 0, 0, pnt);
+    			mBG6 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.menu_view_6);
+    			canvas.drawBitmap(mBG6, src, dst, pnt);
+//    			canvas.drawBitmap(mBG6, 0, 0, pnt);
 //				canvas.drawText(menu61, 50, 275, pnt2);
 //				canvas.drawText(menu62, 50, 335, pnt2);
     		}

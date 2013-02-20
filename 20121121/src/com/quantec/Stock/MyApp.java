@@ -18,7 +18,7 @@ public class MyApp extends Application{
 //    private static digitD digitR;
     private static int duration = 40;
     private static String tmp;
-    private static float version = 2.025f;
+    private static float version = 2.030f;
     
     private static int show_result = 0;
     private static int show_result_menu = 0;

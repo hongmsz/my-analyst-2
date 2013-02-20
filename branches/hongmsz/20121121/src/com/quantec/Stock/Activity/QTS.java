@@ -969,7 +969,11 @@ public class QTS extends Activity {
 				
 				dr = (qt_count%100 + (qt_count/100)*4)*12-1;
 				
-				dur2 = (this_w/100 - ((begin_q/100)*100 + (begin_q%100 + 1)*3) - 1)*4 + this_w%100;
+				if(this_w/10000 == begin_q/100){
+					dur2 = ((this_w/100)%100 - ((begin_q%100 + 1)*3) - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
+				}else{
+					dur2 = ((this_w/100)%100 - ((begin_q%100 + 1)*3) + (this_w/10000 - begin_q/100)*12 - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
+				}
 				
 				dr = dr + dur2;
 				
@@ -1295,13 +1299,16 @@ public class QTS extends Activity {
     	    
     	    if(sub_menu > 0){
 //    	    	canvas.drawRect((float)0, menu_pos+menu_dist, (float)width*4/9, menu_pos+menu_dist*4, W_30);
-    	    	for(int mp=0; mp<3; mp++){
+    	    	for(int mp=0; mp<5; mp++){
     	    		canvas.drawBitmap(Icon_t3, 0, menu_pos+menu_dist*(mp+1), pnt2);
     	    		canvas.drawBitmap(Icon_soff, (float)width*4/9-Icon_soff.getWidth()-5f, menu_pos+menu_dist*(mp+1), pnt);
     	    	}
 				canvas.drawText("EPS 증가율 기준", 	15f, menu_pos+menu_text_dist+menu_dist*3/2, W_30);
-				canvas.drawText("매출액 기준", 			15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
+				canvas.drawText("매출액 기준", 		15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
 				canvas.drawText("영업이익 기준", 		15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
+				////////////////////////////////////////////// 2013.02.20 메뉴 추가
+				canvas.drawText("임시 메뉴 1", 		15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
+				canvas.drawText("임시 메뉴 2", 		15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
     	    }
     	    if(sub_menu == 2){
     	    	switch(sub_menu2){
@@ -1325,6 +1332,21 @@ public class QTS extends Activity {
 	    	    		canvas.drawBitmap(M_ss, 0, menu_pos+menu_dist*3, pnt);
 	    	    		canvas.drawBitmap(Icon_son, (float)width*4/9-Icon_son.getWidth()-5f, menu_pos+menu_dist*3, pnt);
 	    	    		canvas.drawBitmap(Pnter, (float)width*4/9-3f, menu_pos+menu_dist*3, pnt2);
+	    	    		break;
+    				////////////////////////////////////////////// 2013.02.20 메뉴 추가
+	    	    	case 3:
+//	    	    		canvas.drawRect(0, menu_pos+menu_dist*2, (float)width*4/9, menu_pos+menu_dist*3, G_24);
+//	    	    		canvas.drawText(">", (float)width*4/9-20, menu_pos+menu_text_dist+menu_dist*5/2, B_30);
+	    	    		canvas.drawBitmap(M_ss, 0, menu_pos+menu_dist*4, pnt);
+	    	    		canvas.drawBitmap(Icon_son, (float)width*4/9-Icon_son.getWidth()-5f, menu_pos+menu_dist*4, pnt);
+	    	    		canvas.drawBitmap(Pnter, (float)width*4/9-3f, menu_pos+menu_dist*4, pnt2);
+						break;
+	    	    	case 4:
+//	    	    		canvas.drawRect((float)0, menu_pos+menu_dist*3, (float)width*4/9, menu_pos+menu_dist*4, G_24);
+//	    	    		canvas.drawText(">", (float)width*4/9-20, menu_pos+menu_text_dist+menu_dist*7/2, B_30);
+	    	    		canvas.drawBitmap(M_ss, 0, menu_pos+menu_dist*5, pnt);
+	    	    		canvas.drawBitmap(Icon_son, (float)width*4/9-Icon_son.getWidth()-5f, menu_pos+menu_dist*5, pnt);
+	    	    		canvas.drawBitmap(Pnter, (float)width*4/9-3f, menu_pos+menu_dist*5, pnt2);
 	    	    		break;
     	    	}
     	    	
@@ -1419,8 +1441,8 @@ public class QTS extends Activity {
             if(Float.valueOf(op_out).floatValue() <= Float.valueOf(version)){
     			update.setTitle("※ 버전 "+String.format("%.3f", Float.valueOf(version))+" 업데이트 내용");
 	    		update.setMessage("이번 업데이트를 통해 수정이 이루어진 부분은 아래와 같습니다.\n\n" +
-	    				"1. 메모리 부족 현상 해결\n" +
-	    				"  - 종목 검색 후 일부 기종에서 강제 종료가 되는 문제 해결.");
+	    				"1. 주가 정보 불러오기 오류 해결\n" +
+	    				"  - 일부 종목 검색시 주가 정보를 제대로 가져오지 못하는 문제 해결.");
 	    		update.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {

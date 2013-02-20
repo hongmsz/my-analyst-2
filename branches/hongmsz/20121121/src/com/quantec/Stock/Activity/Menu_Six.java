@@ -45,6 +45,8 @@ public class Menu_Six extends Activity {
     float x1, y1, x2, y2;
     int tmp_v;
     int duration;
+    int[] qt_tmp = new int[43];
+    int tmp_y, tmp_q;
     
 	float b_x = 25;
 	float c_y;
@@ -118,7 +120,13 @@ public class Menu_Six extends Activity {
 		c_width = (float)width/D_width;
 		c_height = (float)height/D_height;
 		
-		dur2 = (GV.getStockCount().last_sw/100 - ((GV.getStockCount().begin_sq/100)*100 + (GV.getStockCount().begin_sq%100 + 1)*3) - 1)*4 + GV.getStockCount().last_sw%100;
+//		dur2 = (GV.getStockCount().last_sw/100 - ((GV.getStockCount().begin_sq/100)*100 + (GV.getStockCount().begin_sq%100 + 1)*3) - 1)*4 + GV.getStockCount().last_sw%100; 
+		
+		if(GV.getStockCount().last_sw/10000 == GV.getStockCount().begin_sq/100){
+			dur2 = ((GV.getStockCount().last_sw/100)%100 - ((GV.getStockCount().begin_sq%100 + 1)*3) - 1)*4 + GV.getStockCount().last_sw%100; // (begin_q/100)*100  // this_w/100
+		}else{
+			dur2 = ((GV.getStockCount().last_sw/100)%100 - ((GV.getStockCount().begin_sq%100 + 1)*3) + (GV.getStockCount().last_sw/10000 - GV.getStockCount().begin_sq/100)*12 - 1)*4 + GV.getStockCount().last_sw%100; // (begin_q/100)*100  // this_w/100
+		}
 		
 		title_position = height/6;
 
@@ -435,15 +443,39 @@ public class Menu_Six extends Activity {
 	    			for(int dx = 0; dx< duration; dx++){
 						posX[dx] = (float)(width-width*0.15f)/(float)(duration)*dx + width*0.075f /* */ - (float)(width-width*0.15f)/(float)((duration+1)*12-1)*dur2;;
 	    			}
-	    			for(int dx = 0; dx< duration; dx++){
-						if(GV.getStockD().m_quarter[duration - dx-1]%4 == 1 && posX[dx] > width*0.067f){
-							canvas.drawText(Y_count+"", posX[dx], height*(float)0.77+height*0.03125f, W_18);
+	    			
+//////////////////////////////////////////////////////
+//연도/ 분기 계산	    			
+					int tmp_dx = 0, tmp_qx;					
+					
+					for(int dx = 0; dx< duration; dx++){
+						if(GV.getStockD().m_quarter[dx] == 1){
+							tmp_qx = tmp_q - (dx-tmp_dx + 4-tmp_q)%4;
+							if(tmp_qx < 1)
+								tmp_qx += 4;
+							
+							qt_tmp[dx] = (tmp_y - (dx-tmp_dx+4-tmp_q)/4)*100 + tmp_qx;
+							
+						}else{
+							qt_tmp[dx] = GV.getStockD().m_quarter[dx];
+							tmp_y = GV.getStockD().m_quarter[dx]/100;
+							tmp_q = GV.getStockD().m_quarter[dx]%4;
+							if(tmp_q == 0) tmp_q = 4;
+							tmp_dx = dx-1;
+						}
+					}	    			
+					
+					//////////////////////////////////////////////////////
+					for(int dx = 0; dx< duration; dx++){
+						//if(GV.getStockD().m_quarter[duration - dx-1]%4 == 1 && posX[dx] > width*0.067f){
+						if(qt_tmp[duration - dx-1]%4 == 1 && posX[dx] > width*0.067f){
+							canvas.drawText(Y_count+"", posX[dx], height*0.77f+15*c_height, W_18);
 							Y_count++;
 							
-							canvas.drawLine(posX[dx], height*(float)0.23, posX[dx], height*(float)0.77, _Drawable.getPaint());
+							canvas.drawLine(posX[dx], height*0.23f, posX[dx], height*(float)0.77, _Drawable.getPaint());
 						}
-	    			}
-    			}
+					}
+				}
     			
     			if(opt_dur == 0){
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);

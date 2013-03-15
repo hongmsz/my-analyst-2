@@ -109,7 +109,7 @@ public class QTS extends Activity {
     int qt_count = 201101;
 	int tmp_count, dr;
 	
-	int begin_q;// = 201201;	//옵션 메뉴 생성
+	int begin_q, begin_oq;// = 201201;	//옵션 메뉴 생성
 	int end_q;						//옵션 메뉴 생성
 	int this_w;// = 20120702;	//옵션 메뉴 생성
 	int sub_menu1 = -1;	//옵션 메뉴 생성
@@ -287,7 +287,7 @@ public class QTS extends Activity {
 
     	tmp_stock_count = getSDur();
     	
-    	begin_q = tmp_stock_count.begin_sq;
+    	begin_q = begin_oq =  tmp_stock_count.begin_sq;
     	this_w = tmp_stock_count.last_sw;
 		
 		GV.setStockCount(tmp_stock_count);
@@ -969,10 +969,10 @@ public class QTS extends Activity {
 				
 				dr = (qt_count%100 + (qt_count/100)*4)*12-1;
 				
-				if(this_w/10000 == begin_q/100){
-					dur2 = ((this_w/100)%100 - ((begin_q%100 + 1)*3) - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
+				if(this_w/10000 == begin_oq/100){
+					dur2 = ((this_w/100)%100 - ((begin_oq%100 + 1)*3) - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
 				}else{
-					dur2 = ((this_w/100)%100 - ((begin_q%100 + 1)*3) + (this_w/10000 - begin_q/100)*12 - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
+					dur2 = ((this_w/100)%100 - ((begin_oq%100 + 1)*3) + (this_w/10000 - begin_oq/100)*12 - 1)*4 + this_w%100; // (begin_q/100)*100  // this_w/100
 				}
 				
 				dr = dr + dur2;
@@ -1299,7 +1299,7 @@ public class QTS extends Activity {
     	    
     	    if(sub_menu > 0){
 //    	    	canvas.drawRect((float)0, menu_pos+menu_dist, (float)width*4/9, menu_pos+menu_dist*4, W_30);
-    	    	for(int mp=0; mp<5; mp++){
+    	    	for(int mp=0; mp<8; mp++){
     	    		canvas.drawBitmap(Icon_t3, 0, menu_pos+menu_dist*(mp+1), pnt2);
     	    		canvas.drawBitmap(Icon_soff, (float)width*4/9-Icon_soff.getWidth()-5f, menu_pos+menu_dist*(mp+1), pnt);
     	    	}
@@ -1307,8 +1307,11 @@ public class QTS extends Activity {
 				canvas.drawText("매출액 기준", 		15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
 				canvas.drawText("영업이익 기준", 		15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
 				////////////////////////////////////////////// 2013.02.20 메뉴 추가
-				canvas.drawText("임시 메뉴 1", 		15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
-				canvas.drawText("임시 메뉴 2", 		15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
+				canvas.drawText("PER 기준", 		15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
+				canvas.drawText("PBR 기준", 		15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
+				canvas.drawText("배당수익률 기준", 		15f, menu_pos+menu_text_dist+menu_dist*13/2, W_30);
+				canvas.drawText("주가상승률 기준", 		15f, menu_pos+menu_text_dist+menu_dist*15/2, W_30);
+				canvas.drawText("ROE 기준", 		15f, menu_pos+menu_text_dist+menu_dist*17/2, W_30);
     	    }
     	    if(sub_menu == 2){
     	    	switch(sub_menu2){

@@ -71,7 +71,7 @@ public class QTS extends Activity {
 	private boolean isTwoClickBack = false;
 	
 	int count = 0;
-	String str ="해당 데이터가 없습니다. 다시 입력해주십시오";
+	String str = getString(R.string.no_data);
 	Intent Ctest, CHint;
 	
 	testView test;
@@ -109,8 +109,7 @@ public class QTS extends Activity {
     int qt_count = 201101;
 	int tmp_count, dr;
 	
-	int begin_q, begin_oq;// = 201201;	//옵션 메뉴 생성
-	int end_q;						//옵션 메뉴 생성
+	int begin_q, end_q, begin_oq;// = 201201;	//옵션 메뉴 생성
 	int this_w;// = 20120702;	//옵션 메뉴 생성
 	int sub_menu1 = -1;	//옵션 메뉴 생성
 	int sub_menu2 = -1;	//옵션 메뉴 생성
@@ -216,7 +215,7 @@ public class QTS extends Activity {
     		et.setHeight((int)(GV.getDisplay().getHeight()*0.07f));
     		et.setTextSize(13);
     	}
-    	et.setText("종목 명 또는 종목 코드");
+    	et.setText(getString(R.string.insert_code));
     	et.setOnClickListener(on_ETinit);
     	et.setOnKeyListener(on_kETinit);
     	
@@ -648,7 +647,7 @@ public class QTS extends Activity {
 			tmp_stock = null;
 			GV.setStockD(tmp_stock);
 			
-			dialog = ProgressDialog.show(QTS.this, "", MyApp.getGlobalString()+"\n정보 불러오는  중..", true, true);
+			dialog = ProgressDialog.show(QTS.this, "", MyApp.getGlobalString()+"\n"+getString(R.string.now_loading), true, true);
 			new Thread(new Runnable() {
 		        
 		        public void run() {
@@ -736,7 +735,7 @@ public class QTS extends Activity {
 				tmp_stock = null;
 				GV.setStockD(tmp_stock);
 				
-				dialog = ProgressDialog.show(QTS.this, "", "불러오는 중..", true, true);
+				dialog = ProgressDialog.show(QTS.this, "", getString(R.string.now_loading), true, true);
 				new Thread(new Runnable() {
 			        
 			        public void run() {

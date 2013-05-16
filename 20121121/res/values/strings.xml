@@ -2,4 +2,7 @@
 <resources>
     <string name="hello">Hello World, QTS!</string>
     <string name="app_name">My Analyst</string>
+    <string name="no_data">해당 데이터가 없습니다. 다시 입력해주십시오.</string>
+    <string name="insert_code">종목 명 또는 종목 코드</string>
+    <string name="now_loading">불러오는  중..</string>
 </resources>

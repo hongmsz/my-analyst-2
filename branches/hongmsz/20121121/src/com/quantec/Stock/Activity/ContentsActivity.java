@@ -50,35 +50,35 @@ public class ContentsActivity extends Activity {
     
     AlertDialog.Builder bld;
 /*    
-    private String mSub = "ÀÚ¼¼È÷ º¸±â";
-    private String mPre = "µ¹¾Æ°¡±â";
+    private String mSub = "ìì„¸íˆ ë³´ê¸°";
+    private String mPre = "ëŒì•„ê°€ê¸°";
     
-    private String menu1 = "¼öÀÍ¼º";
+    private String menu1 = "ìˆ˜ìµì„±";
     private String menu11 = "  1. EPS";
-    private String menu12 = "  2. EPS & ¸ÅÃâ¾×";
-    private String menu13 = "  3. ¸ÅÃâ¾× & ¿µ¾÷ÀÌÀÍ & ¼øÀÌÀÍ";
-    private String menu14 = "  4. ¸ÅÃâ¾×¿µ¾÷ÀÌÀÍ·ü & ¸ÅÃâ¾×¼øÀÌÀÍ·ü";
-    private String menu15 = "  5. ¿µ¾÷¿Ü¼ÕÀÍ·ü";
-    private String menu2 = "¾ÈÀü¼º";
-    private String menu21 = "  1. ºÎÃ¤ºñÀ² & À¯µ¿ºñÀ²";
-    private String menu22 = "  2. Â÷ÀÔ±İ & Â÷ÀÔ±İºñÁß";
-    private String menu23 = "  3. ÀÌÀÚº¸»ó¹èÀ²";
-    private String menu24 = "  4. ÀÚ±âÀÚº»ºñÀ²";
-    private String menu3 = "¹è´ç¼º";
-    private String menu31 = "  1. À¯º¸À²";
-    private String menu32 = "  2. ¹è´ç±İ & ½Ã°¡¹è´ç·ü";
-    private String menu33 = "  3. ¹è´ç¼ºÇâ & ½Ã°¡¹è´ç·ü";
-    private String menu4 = "¼ºÀå¼º";
+    private String menu12 = "  2. EPS & ë§¤ì¶œì•¡";
+    private String menu13 = "  3. ë§¤ì¶œì•¡ & ì˜ì—…ì´ìµ & ìˆœì´ìµ";
+    private String menu14 = "  4. ë§¤ì¶œì•¡ì˜ì—…ì´ìµë¥  & ë§¤ì¶œì•¡ìˆœì´ìµë¥ ";
+    private String menu15 = "  5. ì˜ì—…ì™¸ì†ìµë¥ ";
+    private String menu2 = "ì•ˆì „ì„±";
+    private String menu21 = "  1. ë¶€ì±„ë¹„ìœ¨ & ìœ ë™ë¹„ìœ¨";
+    private String menu22 = "  2. ì°¨ì…ê¸ˆ & ì°¨ì…ê¸ˆë¹„ì¤‘";
+    private String menu23 = "  3. ì´ìë³´ìƒë°°ìœ¨";
+    private String menu24 = "  4. ìê¸°ìë³¸ë¹„ìœ¨";
+    private String menu3 = "ë°°ë‹¹ì„±";
+    private String menu31 = "  1. ìœ ë³´ìœ¨";
+    private String menu32 = "  2. ë°°ë‹¹ê¸ˆ & ì‹œê°€ë°°ë‹¹ë¥ ";
+    private String menu33 = "  3. ë°°ë‹¹ì„±í–¥ & ì‹œê°€ë°°ë‹¹ë¥ ";
+    private String menu4 = "ì„±ì¥ì„±";
     private String menu41 = "  1. ROE & PBR";
-    private String menu42 = "  2. ÃÑÀÚ»ê Áõ°¡À²";
+    private String menu42 = "  2. ì´ìì‚° ì¦ê°€ìœ¨";
     private String menu43 = "  3. ROA & ROE";
-    private String menu5 = "È¿À²¼º";
-    private String menu51 = "  1. ÃÑÀÚ»ê È¸ÀüÀ²";
-    private String menu52 = "  2. ¸ÅÃâÃ¤±Ç È¸ÀüÀ²";
-    private String menu53 = "  3. Àç°íÀÚ»ê È¸ÀüÀ²";
-    private String menu6 = "°¡Ä¡Æò°¡";
-    private String menu61 = "  1. ÁÖ°¡¼øÀÚ»êºñÀ²(PBR)";
-    private String menu62 = "  2. ÁÖ´ç¼øÀÚ»ê(BPS)";
+    private String menu5 = "íš¨ìœ¨ì„±";
+    private String menu51 = "  1. ì´ìì‚° íšŒì „ìœ¨";
+    private String menu52 = "  2. ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨";
+    private String menu53 = "  3. ì¬ê³ ìì‚° íšŒì „ìœ¨";
+    private String menu6 = "ê°€ì¹˜í‰ê°€";
+    private String menu61 = "  1. ì£¼ê°€ìˆœìì‚°ë¹„ìœ¨(PBR)";
+    private String menu62 = "  2. ì£¼ë‹¹ìˆœìì‚°(BPS)";
 */    
 	public void onCreate(Bundle savedInstanceState) {
 		GV = (MyApp) getApplication();

@@ -104,7 +104,7 @@ public class Hint extends Activity {
                 	y2=event.getY();
                 	
             		if(y1 > 150 && y1 < 190){
-            			dialog = ProgressDialog.show(Hint.this, "", "µ¥ÀÌÅÍ Á¤·Ä Áß(EPS Áõ°¡À² ±âÁØ)..", true, true);
+            			dialog = ProgressDialog.show(Hint.this, "", "ë°ì´í„° ì •ë ¬ ì¤‘(EPS ì¦ê°€ìœ¨ ê¸°ì¤€)..", true, true);
             			new Thread(new Runnable() {
             		        
             		        public void run() {
@@ -117,7 +117,7 @@ public class Hint extends Activity {
 //    		        	view = 1;
 //            			test.invalidate();
             		}else if(y1 > 200 && y1 < 240){
-            			dialog = ProgressDialog.show(Hint.this, "", "µ¥ÀÌÅÍ Á¤·Ä Áß(¸ÅÃâ¾× Áõ°¡À² ±âÁØ)..", true, true);
+            			dialog = ProgressDialog.show(Hint.this, "", "ë°ì´í„° ì •ë ¬ ì¤‘(ë§¤ì¶œì•¡ ì¦ê°€ìœ¨ ê¸°ì¤€)..", true, true);
             			new Thread(new Runnable() {
             		        
             		        public void run() {
@@ -129,7 +129,7 @@ public class Hint extends Activity {
             		    }).start();
             			
             		}else if(y1 > 250 && y1 < 290){
-            			dialog = ProgressDialog.show(Hint.this, "", "µ¥ÀÌÅÍ Á¤·Ä Áß(¿µ¾÷ÀÌÀÍ Áõ°¡À² ±âÁØ)..", true, true);
+            			dialog = ProgressDialog.show(Hint.this, "", "ë°ì´í„° ì •ë ¬ ì¤‘(ì˜ì—…ì´ìµ ì¦ê°€ìœ¨ ê¸°ì¤€)..", true, true);
             			new Thread(new Runnable() {
             		        
             		        public void run() {
@@ -145,12 +145,12 @@ public class Hint extends Activity {
 						GV.setSRV(0);
 						GV.setSRM(0);
                 		if(y1 > 330 && y1 < 370 && OptRest.m_Jcode[0] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[0]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[0]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[0];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -160,12 +160,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 370 && y1 < 410 && OptRest.m_Jcode[1] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[1]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[1]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[1];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -175,12 +175,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 410 && y1 < 450 && OptRest.m_Jcode[2] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[2]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[2]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[2];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -190,12 +190,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 450 && y1 < 490 && OptRest.m_Jcode[3] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[3]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[3]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[3];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -205,12 +205,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 490 && y1 < 530 && OptRest.m_Jcode[4] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[4]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[4]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[4];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -220,12 +220,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 530 && y1 < 570 && OptRest.m_Jcode[5] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[5]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[5]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[5];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -235,12 +235,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 570 && y1 < 610 && OptRest.m_Jcode[6] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[6]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[6]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[6];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -250,12 +250,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 610 && y1 < 650 && OptRest.m_Jcode[7] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[7]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[7]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[7];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -265,12 +265,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 650 && y1 < 690 && OptRest.m_Jcode[8] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[8]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[8]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[8];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -280,12 +280,12 @@ public class Hint extends Activity {
                 		        }
                 		    }).start();
                 		}else if(y1 > 690 && y1 < 730 && OptRest.m_Jcode[9] != null){
-                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[9]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+                			dialog = ProgressDialog.show(Hint.this, "", OptRest.m_Kname[9]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
                 			new Thread(new Runnable() {
                 		        
                 		        public void run() {
                 		        	tmp = OptRest.m_Jcode[9];
-                        			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+                        			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
                         			GV.setStockD(tmp_stock);
                         			tmp_stock = getSValueA(tmp);
                         			tmp_stock = getWSValue(tmp);
@@ -406,16 +406,16 @@ private OptD getOptValue(String Index, int Opt1, int Opt2, int Opt3, int Opt4){
     		B_24.setTextSize(24);
     		B_24.setAntiAlias(true);
     		
-    		canvas.drawText("[¿É¼Ç ¼±ÅÃ]", 20, 120, B_24);
-    		canvas.drawText("EPS Áõ°¡À² ±âÁØ Á¤·Ä", 20, 170, B_24);
-    		canvas.drawText("¸ÅÃâ¾× Áõ°¡À² ±âÁØ Á¤·Ä", 20, 220, B_24);
-    		canvas.drawText("¿µ¾÷ ÀÌÀÍ Áõ°¡À² ±âÁØ Á¤·Ä", 20, 270, B_24);
+    		canvas.drawText("[ì˜µì…˜ ì„ íƒ]", 20, 120, B_24);
+    		canvas.drawText("EPS ì¦ê°€ìœ¨ ê¸°ì¤€ ì •ë ¬", 20, 170, B_24);
+    		canvas.drawText("ë§¤ì¶œì•¡ ì¦ê°€ìœ¨ ê¸°ì¤€ ì •ë ¬", 20, 220, B_24);
+    		canvas.drawText("ì˜ì—… ì´ìµ ì¦ê°€ìœ¨ ê¸°ì¤€ ì •ë ¬", 20, 270, B_24);
 /*    		
     		if(lit > 10)
 				lit = 10;
     		
     		if(view == 1){
-    			canvas.drawText("[°Ë»ö °á°ú]", 20, 320, B_24);
+    			canvas.drawText("[ê²€ìƒ‰ ê²°ê³¼]", 20, 320, B_24);
     			
 	    		for(int k = 0 ; k< lit; k++){
 	    			canvas.drawText(OptRest.m_Kname[k], 20, 350+(k*40), B_24);
@@ -456,7 +456,7 @@ private OptD getOptValue(String Index, int Opt1, int Opt2, int Opt3, int Opt4){
 //				String connectUrl = "http://hongmsz.raonnet.com/Stock_data_final/" + dataStock.m_Jcode + ".xml";
 				String connectUrl = "http://quantec.co.kr/Stock_data_final.html?id=" + dataStock.m_Jcode;
 //				String connectUrl = "http://quantec.co.kr/Stock_data_final/" + dataStock.m_Jcode + ".xml";
-				// ÇØ´ç Áö¿ªÀÇ urlÀ» ¼³Á¤ÇÑ´Ù.
+				// í•´ë‹¹ ì§€ì—­ì˜ urlì„ ì„¤ì •í•œë‹¤.
 				
 				URL UrlgetStockD = null;
 				UrlgetStockD = new URL(connectUrl);
@@ -546,7 +546,7 @@ private StockD getSValueA(String S_Code){
 //				String connectUrl = "http://quantec.co.kr/Stock_data_annual/A" + dataStock.m_Jcode + ".xml";
 				String connectUrl = "http://quantec.co.kr/Stock_data_annual.html?id=" + dataStock.m_Jcode;
 				
-				// ÇØ´ç Áö¿ªÀÇ urlÀ» ¼³Á¤ÇÑ´Ù.
+				// í•´ë‹¹ ì§€ì—­ì˜ urlì„ ì„¤ì •í•œë‹¤.
 				
 				URL UrlgetStockD = null;
 				UrlgetStockD = new URL(connectUrl);

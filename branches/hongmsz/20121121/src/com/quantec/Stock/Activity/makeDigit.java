@@ -14,26 +14,26 @@ public class makeDigit {
 			min = min/1000000000l;
 			v_max1 = String.format("%.2f", Float.valueOf(max));
 			v_min1 = String.format("%.2f", Float.valueOf(min));
-			tmp_D.uWon = " (½Ê¾ï¿ø)";
+			tmp_D.uWon = " (ì‹­ì–µì›)";
 			tmp_D.dCount = 9;
 		}else if(v_max1.length()>8){
 			max = max/100000000;
 			min = min/100000000;
 			v_max1 = String.format("%.2f", Float.valueOf(max));
 			v_min1 = String.format("%.2f", Float.valueOf(min));
-			tmp_D.uWon = " (¾ï¿ø)";
+			tmp_D.uWon = " (ì–µì›)";
 			tmp_D.dCount = 8;
 		}else if(v_max1.length()>3){
 			max = max/1000;
 			min = min/1000;
 			v_max1 = String.format("%.2f", Float.valueOf(max));
 			v_min1 = String.format("%.2f", Float.valueOf(min));
-			tmp_D.uWon = " (Ãµ¿ø)";
+			tmp_D.uWon = " (ì²œì›)";
 			tmp_D.dCount = 3;
 		}else{
 			v_max1 = String.format("%.2f", Float.valueOf(max));
 			v_min1 = String.format("%.2f", Float.valueOf(min));
-			tmp_D.uWon = " (¿ø)";
+			tmp_D.uWon = " (ì›)";
 			tmp_D.dCount = 0;
 		}
 
@@ -63,7 +63,7 @@ public class makeDigit {
 				min = min/10;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (½Ê¿ø)";
+				tmp_D.uWon = " (ì‹­ì›)";
 				tmp_D.dCount = 1;
 				break;
 			case 2:
@@ -71,7 +71,7 @@ public class makeDigit {
 				min = min/100;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (¹é¿ø)";
+				tmp_D.uWon = " (ë°±ì›)";
 				tmp_D.dCount = 2;
 				break;
 			case 3:
@@ -79,7 +79,7 @@ public class makeDigit {
 				min = min/1000;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (Ãµ¿ø)";
+				tmp_D.uWon = " (ì²œì›)";
 				tmp_D.dCount = 3;
 				break;
 			case 4:
@@ -87,7 +87,7 @@ public class makeDigit {
 				min = min/10000;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (¸¸¿ø)";
+				tmp_D.uWon = " (ë§Œì›)";
 				tmp_D.dCount = 4;
 				break;
 			case 5:
@@ -95,7 +95,7 @@ public class makeDigit {
 				min = min/100000;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (½Ê¸¸¿ø)";
+				tmp_D.uWon = " (ì‹­ë§Œì›)";
 				tmp_D.dCount = 5;
 				break;
 			case 6:
@@ -103,7 +103,7 @@ public class makeDigit {
 				min = min/1000000;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (¹é¸¸¿ø)";
+				tmp_D.uWon = " (ë°±ë§Œì›)";
 				tmp_D.dCount = 6;
 				break;
 			case 7:
@@ -111,7 +111,7 @@ public class makeDigit {
 				min = min/10000000l;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (Ãµ¸¸¿ø)";
+				tmp_D.uWon = " (ì²œë§Œì›)";
 				tmp_D.dCount = 7;
 				break;
 			case 8:
@@ -119,7 +119,7 @@ public class makeDigit {
 				min = min/100000000l;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (¾ï¿ø)";
+				tmp_D.uWon = " (ì–µì›)";
 				tmp_D.dCount = 8;
 				break;
 			case 9:
@@ -127,7 +127,7 @@ public class makeDigit {
 				min = min/1000000000l;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (½Ê¾ï¿ø)";
+				tmp_D.uWon = " (ì‹­ì–µì›)";
 				tmp_D.dCount = 9;
 				break;
 			case 10:
@@ -135,12 +135,12 @@ public class makeDigit {
 				min = min/10000000000l;
 				v_max1 = max+"";
 				v_min1 = min+"";
-				tmp_D.uWon = " (¹é¾ï¿ø)";
+				tmp_D.uWon = " (ë°±ì–µì›)";
 				tmp_D.dCount = 10;
 				break;
 			}
 		}else{
-			tmp_D.uWon = " (¿ø)";
+			tmp_D.uWon = " (ì›)";
 		}
 		
 		tmp_D.v1 = (int)(min+(max-min)/5)+"";

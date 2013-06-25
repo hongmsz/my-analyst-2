@@ -69,11 +69,11 @@ public class Menu_Five extends Activity {
     long tmp_dig;
     int fix_dis = 0;
     
-    float[] f_slong;				// ÁÖ°¡ º¯µ¿ Ãß¼¼
-    float[] f_sshort;				// ÁÖ°¡ º¯µ¿ Ãß¼¼
+    float[] f_slong;				// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+    float[] f_sshort;				// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 
-    float f_stmp;					// ÁÖ°¡ º¯µ¿ Ãß¼¼
-    int macd=0;					// ÁÖ°¡ º¯µ¿ Ãß¼¼
+    float f_stmp;					// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+    int macd=0;					// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
     int dur2;
     int dur_s = 5, dur_l=20;
     
@@ -81,33 +81,33 @@ public class Menu_Five extends Activity {
         
     AlertDialog.Builder bld;
     
-    String mTitle = "È¿À²¼º";
+    String mTitle = "íš¨ìœ¨ì„±";
     
-    String exp1 = "[ÃÑÀÚ»ê È¸ÀüÀ²]\n" +
-    		"ÃÑÀÚ»ê È¸ÀüÀ² = ¸ÅÃâ¾× / Æò±Õ ÃÑÀÚ»ê\n" +
-    		"(1.5È¸ ÀÌ»ó ¾çÈ£, 1È¸ ÀÌÇÏ ºÒ·®)\n" +
-    		" * ±â¾÷ÀÇ ¿µ¾÷È°µ¿À» À§ÇØ ÅõÀÔÇÑ ÃÑÀÚ»êÀÇ ¿î¿ëÈ¿À²À» ÃÑ°ýÀûÀ¸·Î ³ªÅ¸³»´Â ÁöÇ¥\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ÃÑÀÚ»ê È¸ÀüÀ²ÀÌ 1È¸ÀüÀÌ¶ó´Â °ÍÀº ÃÑÀÚ»ê°ú ¸ÅÃâ¾×ÀÌ °°´Ù´Â°ÍÀ» ¶æÇÑ´Ù\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ÃÑÀÚ»ê È¸ÀüÀ²ÀÌ ³ôÀ¸¸é À¯µ¿ÀÚ»ê  °íÁ¤ÀÚ»ê µîÀÌ È¿À²ÀûÀ¸·Î ÀÌ¿ëµÇ°í ÀÖ´Ù´Â °ÍÀ» ¶æÇÏ¸ç ¹Ý´ë·Î ³·À¸¸é °úÀ×ÅõÀÚ¿Í °°Àº ºñÈ¿À²ÀûÀÎ ÅõÀÚ¸¦ ÇÏ°í ÀÖ´Ù´Â°ÍÀ» ÀÇ¹Ì";
-    String exp2 = "[¸ÅÃâÃ¤±Ç È¸ÀüÀ²]\n" +
-    		"¸ÅÃâÃ¤±Ç È¸ÀüÀ² =  ¸ÅÃâ¾× / {(±âÃÊ¸ÅÃâÃ¤±Ç + ±â¸»¸ÅÃâÃ¤±Ç)/2}\n" +
-    		"(6È¸ÀÌ»ó ¾çÈ£, 4È¸ ÀÌÇÏ ºÒ·®)\n" +
-    		" * ¸ÅÃâÃ¤±ÇÀÇ Çö±ÝÈ­¼Óµµ°¡ ¾î´ÀÁ¤µµ ºü¸¥Áö¸¦ º¸¿©ÁÖ´Â ÁöÇ¥.\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ¿¹¸¦ µé¾î, ¸ÅÃâÃ¤±ÇÈ¸ÀüÀ²ÀÌ 6È¸¶ó´Â °ÍÀº ¸ÅÃâ¾×ÀÌ Æò±Õ¸ÅÃâÃ¤±ÇÀÇ 6¹è¶ó´Â °ÍÀ» ÀÇ¹ÌÇÏ¸ç, ÀÌ¸¦ Àü±âÀÇ È¸ÀüÀ²°ú ºñ±³ ºÐ¼®ÇÔÀ¸·Î½á ¸ÅÃâ¿¡ ´ëÇÑ ¼ºÀå¼ºÀ» ºÐ¼® ÇÒ ¼ö ÀÖ´Ù.\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ¸ÅÃâÃ¤±Ç È¸ÀüÀ²ÀÌ ³ô´Ù´Â °ÍÀº ¸ÅÃâÃ¤±ÇÀÌ ¼øÁ¶·Ó°Ô È¸¼öµÇ°í ÀÖÀ½À» ³ªÅ¸³»³ª, ¹Ý´ë·Î È¸ÀüÀ²ÀÌ ³·À¸¸é ¸ÅÃâÃ¤±ÇÀÇ È¸¼ö±â°£ÀÌ ±æ¾îÁö¹Ç·Î, ±×¿¡ µû¸¥ ´ë¼Õ¹ß»ýÀÇ À§ÇèÀÌ Áõ°¡ÇÏ°í ¼öÀÍ°¨¼ÒÀÇ ¿øÀÎÀÌ µÊ.";
-    String exp3 = "[Àç°íÀÚ»ê È¸ÀüÀ²]\n" +
-    		"Àç°íÀÚ»ê È¸ÀüÀ² =  ¸ÅÃâ¾× / {(±âÃÊÀç°íÀÚ»ê + ±â¸»Àç°íÀÚ»ê)/2}\n" +
-    		"(6È¸ÀÌ»ó ¾çÈ£, 4È¸ ÀÌÇÏ ºÒ·®)\n" +
-    		" * Àç°íÀÚ»êÀÌ ´çÁÂÀÚ»êÀ¸·Î º¯È­ÇÏ´Â ¼Óµµ°¡ ¾î´ÀÁ¤µµ ºü¸¥Áö¸¦ º¸¿©ÁÖ´Â ÁöÇ¥.\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ÀÏ¹ÝÀûÀ¸·Î ÀÌ ºñÀ²ÀÌ ³ôÀ»¼ö·Ï Àç°íÀÚ»êÀÇ °ü¸®°¡ È¿À²ÀûÀ¸·Î ÀÌ·ç¾îÁö°í ÀÖ´Ù´Â °ÍÀ» ÀÇ¹Ì ÇÑ´Ù.\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ºñÀ²ÀÌ ³ôÀ»¼ö·Ï ÀÚº»¼öÀÍ·üÀÌ ³ô¾ÆÁö°í, ¸ÅÀÔÃ¤¹«°¡ °¨¼ÒµÇ¸ç, »óÇ°ÀÇ Àç°í¼Õ½ÇÀ» ¸·À»¼ö ÀÖÀ¸¸ç º¸Çè·á ¹× º¸°ü·á¸¦ Àý¾àÇÒ ¼ö ÀÖ¾î ±â¾÷Ãø¿¡ À¯¸®ÇÔ.\n" +
-    		"* ºñÀ²ÀÌ °ú´ëÇÏ°Ô ³ôÀ»°æ¿ì ¿øÀç·á ¹× Á¦Ç°µîÀÇ ºÎÁ·À¸·Î °è¼ÓÀûÀÎ »ý»ê ¹× ÆÇ¸ÅÈ°µ¿¿¡ ÁöÀåÀ» ÃÊ·¡ ÇÒ ¼ö ÀÖ´Ù.";
+    String exp1 = "[ì´ìžì‚° íšŒì „ìœ¨]\n" +
+    		"ì´ìžì‚° íšŒì „ìœ¨ = ë§¤ì¶œì•¡ / í‰ê·  ì´ìžì‚°\n" +
+    		"(1.5íšŒ ì´ìƒ ì–‘í˜¸, 1íšŒ ì´í•˜ ë¶ˆëŸ‰)\n" +
+    		" * ê¸°ì—…ì˜ ì˜ì—…í™œë™ì„ ìœ„í•´ íˆ¬ìž…í•œ ì´ìžì‚°ì˜ ìš´ìš©íš¨ìœ¨ì„ ì´ê´„ì ìœ¼ë¡œ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œ\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ì´ìžì‚° íšŒì „ìœ¨ì´ 1íšŒì „ì´ë¼ëŠ” ê²ƒì€ ì´ìžì‚°ê³¼ ë§¤ì¶œì•¡ì´ ê°™ë‹¤ëŠ”ê²ƒì„ ëœ»í•œë‹¤\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ì´ìžì‚° íšŒì „ìœ¨ì´ ë†’ìœ¼ë©´ ìœ ë™ìžì‚°  ê³ ì •ìžì‚° ë“±ì´ íš¨ìœ¨ì ìœ¼ë¡œ ì´ìš©ë˜ê³  ìžˆë‹¤ëŠ” ê²ƒì„ ëœ»í•˜ë©° ë°˜ëŒ€ë¡œ ë‚®ìœ¼ë©´ ê³¼ìž‰íˆ¬ìžì™€ ê°™ì€ ë¹„íš¨ìœ¨ì ì¸ íˆ¬ìžë¥¼ í•˜ê³  ìžˆë‹¤ëŠ”ê²ƒì„ ì˜ë¯¸";
+    String exp2 = "[ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨]\n" +
+    		"ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨ =  ë§¤ì¶œì•¡ / {(ê¸°ì´ˆë§¤ì¶œì±„ê¶Œ + ê¸°ë§ë§¤ì¶œì±„ê¶Œ)/2}\n" +
+    		"(6íšŒì´ìƒ ì–‘í˜¸, 4íšŒ ì´í•˜ ë¶ˆëŸ‰)\n" +
+    		" * ë§¤ì¶œì±„ê¶Œì˜ í˜„ê¸ˆí™”ì†ë„ê°€ ì–´ëŠì •ë„ ë¹ ë¥¸ì§€ë¥¼ ë³´ì—¬ì£¼ëŠ” ì§€í‘œ.\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ì˜ˆë¥¼ ë“¤ì–´, ë§¤ì¶œì±„ê¶ŒíšŒì „ìœ¨ì´ 6íšŒë¼ëŠ” ê²ƒì€ ë§¤ì¶œì•¡ì´ í‰ê· ë§¤ì¶œì±„ê¶Œì˜ 6ë°°ë¼ëŠ” ê²ƒì„ ì˜ë¯¸í•˜ë©°, ì´ë¥¼ ì „ê¸°ì˜ íšŒì „ìœ¨ê³¼ ë¹„êµ ë¶„ì„í•¨ìœ¼ë¡œì¨ ë§¤ì¶œì— ëŒ€í•œ ì„±ìž¥ì„±ì„ ë¶„ì„ í•  ìˆ˜ ìžˆë‹¤.\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨ì´ ë†’ë‹¤ëŠ” ê²ƒì€ ë§¤ì¶œì±„ê¶Œì´ ìˆœì¡°ë¡­ê²Œ íšŒìˆ˜ë˜ê³  ìžˆìŒì„ ë‚˜íƒ€ë‚´ë‚˜, ë°˜ëŒ€ë¡œ íšŒì „ìœ¨ì´ ë‚®ìœ¼ë©´ ë§¤ì¶œì±„ê¶Œì˜ íšŒìˆ˜ê¸°ê°„ì´ ê¸¸ì–´ì§€ë¯€ë¡œ, ê·¸ì— ë”°ë¥¸ ëŒ€ì†ë°œìƒì˜ ìœ„í—˜ì´ ì¦ê°€í•˜ê³  ìˆ˜ìµê°ì†Œì˜ ì›ì¸ì´ ë¨.";
+    String exp3 = "[ìž¬ê³ ìžì‚° íšŒì „ìœ¨]\n" +
+    		"ìž¬ê³ ìžì‚° íšŒì „ìœ¨ =  ë§¤ì¶œì•¡ / {(ê¸°ì´ˆìž¬ê³ ìžì‚° + ê¸°ë§ìž¬ê³ ìžì‚°)/2}\n" +
+    		"(6íšŒì´ìƒ ì–‘í˜¸, 4íšŒ ì´í•˜ ë¶ˆëŸ‰)\n" +
+    		" * ìž¬ê³ ìžì‚°ì´ ë‹¹ì¢Œìžì‚°ìœ¼ë¡œ ë³€í™”í•˜ëŠ” ì†ë„ê°€ ì–´ëŠì •ë„ ë¹ ë¥¸ì§€ë¥¼ ë³´ì—¬ì£¼ëŠ” ì§€í‘œ.\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ì¼ë°˜ì ìœ¼ë¡œ ì´ ë¹„ìœ¨ì´ ë†’ì„ìˆ˜ë¡ ìž¬ê³ ìžì‚°ì˜ ê´€ë¦¬ê°€ íš¨ìœ¨ì ìœ¼ë¡œ ì´ë£¨ì–´ì§€ê³  ìžˆë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸ í•œë‹¤.\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ë¹„ìœ¨ì´ ë†’ì„ìˆ˜ë¡ ìžë³¸ìˆ˜ìµë¥ ì´ ë†’ì•„ì§€ê³ , ë§¤ìž…ì±„ë¬´ê°€ ê°ì†Œë˜ë©°, ìƒí’ˆì˜ ìž¬ê³ ì†ì‹¤ì„ ë§‰ì„ìˆ˜ ìžˆìœ¼ë©° ë³´í—˜ë£Œ ë° ë³´ê´€ë£Œë¥¼ ì ˆì•½í•  ìˆ˜ ìžˆì–´ ê¸°ì—…ì¸¡ì— ìœ ë¦¬í•¨.\n" +
+    		"* ë¹„ìœ¨ì´ ê³¼ëŒ€í•˜ê²Œ ë†’ì„ê²½ìš° ì›ìž¬ë£Œ ë° ì œí’ˆë“±ì˜ ë¶€ì¡±ìœ¼ë¡œ ê³„ì†ì ì¸ ìƒì‚° ë° íŒë§¤í™œë™ì— ì§€ìž¥ì„ ì´ˆëž˜ í•  ìˆ˜ ìžˆë‹¤.";
     
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -193,7 +193,7 @@ public class Menu_Five extends Activity {
 //							GV.setStockD(null);
 							finish();
 						}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼						
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸						
 						else if( x1 < (float) (MyApp.getDisplay().getWidth()*0.80)+width*0.0625f && x1 > (float) (MyApp.getDisplay().getWidth()*0.80) && y1 > title_position-height*0.09f && y1 < title_position+height*0.01f){
 //							GV.setStockD(null);
 							if(macd==0)
@@ -201,13 +201,13 @@ public class Menu_Five extends Activity {
 							else
 								macd=0;
 						}
-//*///ÁÖ°¡ º¯µ¿ Ãß¼¼		
-						else if( y1 > height*0.24f && y1 < height*0.327f && x1 > width*0.075f && x1 < width*0.231f){ //°¡·Î Â÷Æ®¼³¸í ¹öÆ° À§Ä¡
+//*///ì£¼ê°€ ë³€ë™ ì¶”ì„¸		
+						else if( y1 > height*0.24f && y1 < height*0.327f && x1 > width*0.075f && x1 < width*0.231f){ //ê°€ë¡œ ì°¨íŠ¸ì„¤ëª… ë²„íŠ¼ ìœ„ì¹˜
 							view_val = -1;
 							if(GV.getSRV() == 0) bld.setMessage(exp1);
 							else if(GV.getSRV() == 1) bld.setMessage(exp2);
 							else if(GV.getSRV() == 2) bld.setMessage(exp3);
-							bld.setPositiveButton("´Ý±â", new DialogInterface.OnClickListener() {
+							bld.setPositiveButton("ë‹«ê¸°", new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int which) {
 								}
 							});
@@ -330,7 +330,7 @@ public class Menu_Five extends Activity {
 		Bitmap map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm5);
 		Bitmap map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm5);
 
-		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // ÁÖ°¡ º¯µ¿ Ãß¼¼
+		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 
 		Bitmap c01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_up);
 		Bitmap c02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_mid);
@@ -399,7 +399,7 @@ public class Menu_Five extends Activity {
     		W_24.setTextSize(24*c_height);
     		pnt3.setColor(0xff0071d1);//blue
     		pnt3.setTextSize(18*c_height);
-    		pnt3.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤ 
+    		pnt3.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì • 
     		B_18.setColor(Color.BLACK);
     		B_18.setTextSize(18*c_height);
     		W_18.setColor(Color.WHITE);
@@ -408,9 +408,9 @@ public class Menu_Five extends Activity {
     		B_24.setTextSize(24*c_height);
     		
     		stock_C1.setColor(0xff079200);//yellow
-    		stock_C1.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤
+    		stock_C1.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì •
     		stock_C2.setColor(0xffFFC600);//yellow
-    		stock_C2.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤
+    		stock_C2.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì •
     		
     		pnt.setAntiAlias(true);
     		W_24.setAntiAlias(true);
@@ -474,7 +474,7 @@ public class Menu_Five extends Activity {
 
 
 //////////////////////////////////////////////////////
-//¿¬µµ/ ºÐ±â °è»ê	    			
+//ì—°ë„/ ë¶„ê¸° ê³„ì‚°	    			
 					int tmp_dx = 0, tmp_qx;					
 					
 					for(int dx = 0; dx< duration; dx++){
@@ -525,7 +525,7 @@ public class Menu_Five extends Activity {
 			    	long[] m26_tmp = new long[duration];
 			    	long[] m12_tmp = new long[duration];
 					
-					canvas.drawText("ÃÑÀÚ»ê È¸ÀüÀ²", width*0.2675f, title_position, W_24);
+					canvas.drawText("ì´ìžì‚° íšŒì „ìœ¨", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -588,9 +588,9 @@ public class Menu_Five extends Activity {
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-					canvas.drawText("ÃÑÀÚ»ê È¸ÀüÀ²", c_x + 10, c_y  + 10, B_24);
+					canvas.drawText("ì´ìžì‚° íšŒì „ìœ¨", c_x + 10, c_y  + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -605,7 +605,7 @@ public class Menu_Five extends Activity {
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -632,7 +632,7 @@ public class Menu_Five extends Activity {
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 					if(dis_ori == 1 || dis_ori == 3){
 						tmp_D = null;
 						tmp_D = mD.Ldigit(tmp_max, tmp_min, digit);								
@@ -645,7 +645,7 @@ public class Menu_Five extends Activity {
 						v3 = tmp_D.v3;
 						v4 = tmp_D.v4;
 						
-						canvas.drawText("ÁÖ°¡"+ uWon1 +" ¡ç", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€"+ uWon1 +" â†", c_x + 10, c_y - t_i + 10, B_24);
 						
 						canvas.drawText(v_max1, 5, height*0.26f, W_18);
 						canvas.drawText(v4, 5, height*0.35f, W_18);
@@ -654,9 +654,9 @@ public class Menu_Five extends Activity {
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 					}else
-						canvas.drawText("ÁÖ°¡", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€", c_x + 10, c_y - t_i + 10, B_24);
 					
-					// ÃÑÀÚ»ê È¸ÀüÀ²
+					// ì´ìžì‚° íšŒì „ìœ¨
 //*   		 
 					sorter.sort(f_sort, tmp_count);
 					
@@ -685,7 +685,7 @@ public class Menu_Five extends Activity {
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt3);
 					
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("ÃÑÀÚ»ê È¸ÀüÀ² (È¸) ¡æ", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ì´ìžì‚° íšŒì „ìœ¨ (íšŒ) â†’", c_x + 10, c_y + 10, B_24);
 						
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -727,7 +727,7 @@ public class Menu_Five extends Activity {
 			    	long[] m44_tmp = new long[duration];
 			    	long[] m12_tmp = new long[duration];
 					
-					canvas.drawText("¸ÅÃâÃ¤±Ç È¸ÀüÀ²", width*0.2675f, title_position, W_24);
+					canvas.drawText("ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -788,9 +788,9 @@ public class Menu_Five extends Activity {
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y , r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("¸ÅÃâÃ¤±Ç È¸ÀüÀ²", c_x + 10, c_y  + 10, B_24);
+//					canvas.drawText("ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨", c_x + 10, c_y  + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -805,7 +805,7 @@ public class Menu_Five extends Activity {
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -832,7 +832,7 @@ public class Menu_Five extends Activity {
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 					if(dis_ori == 1 || dis_ori == 3){
 						tmp_D = null;
 						tmp_D = mD.Ldigit(tmp_max, tmp_min, digit);								
@@ -845,7 +845,7 @@ public class Menu_Five extends Activity {
 						v3 = tmp_D.v3;
 						v4 = tmp_D.v4;
 						
-						canvas.drawText("ÁÖ°¡"+ uWon1 +" ¡ç", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€"+ uWon1 +" â†", c_x + 10, c_y - t_i + 10, B_24);
 												
 						canvas.drawText(v_max1, 5, height*0.26f, W_18);
 						canvas.drawText(v4, 5, height*0.35f, W_18);
@@ -854,9 +854,9 @@ public class Menu_Five extends Activity {
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 					}else
-						canvas.drawText("ÁÖ°¡", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€", c_x + 10, c_y - t_i + 10, B_24);
 					
-					// ¸ÅÃâÃ¤±Ç È¸ÀüÀ²
+					// ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨
 //*   		 
 					sorter.sort(f_sort, tmp_count);
 					
@@ -883,7 +883,7 @@ public class Menu_Five extends Activity {
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt3);
 					
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("¸ÅÃâÃ¤±Ç È¸ÀüÀ² (È¸) ¡æ", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨ (íšŒ) â†’", c_x + 10, c_y + 10, B_24);
 						
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -925,7 +925,7 @@ public class Menu_Five extends Activity {
 			    	long[] m45_tmp = new long[duration];
 			    	long[] m12_tmp = new long[duration];
 					
-					canvas.drawText("Àç°íÀÚ»ê È¸ÀüÀ²", width*0.2675f, title_position, W_24);
+					canvas.drawText("ìž¬ê³ ìžì‚° íšŒì „ìœ¨", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -987,9 +987,9 @@ public class Menu_Five extends Activity {
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y , r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("Àç°íÀÚ»ê È¸ÀüÀ²", c_x + 10, c_y + 10, B_24);
+//					canvas.drawText("ìž¬ê³ ìžì‚° íšŒì „ìœ¨", c_x + 10, c_y + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -1004,7 +1004,7 @@ public class Menu_Five extends Activity {
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -1031,7 +1031,7 @@ public class Menu_Five extends Activity {
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 					if(dis_ori == 1 || dis_ori == 3){
 						tmp_D = null;
 						tmp_D = mD.Ldigit(tmp_max, tmp_min, digit);								
@@ -1044,7 +1044,7 @@ public class Menu_Five extends Activity {
 						v3 = tmp_D.v3;
 						v4 = tmp_D.v4;
 						
-						canvas.drawText("ÁÖ°¡"+ uWon1 +" ¡ç", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€"+ uWon1 +" â†", c_x + 10, c_y - t_i + 10, B_24);
 						
 						canvas.drawText(v_max1, 5, height*0.26f, W_18);
 						canvas.drawText(v4, 5, height*0.35f, W_18);
@@ -1053,9 +1053,9 @@ public class Menu_Five extends Activity {
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 					}else
-						canvas.drawText("ÁÖ°¡", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì£¼ê°€", c_x + 10, c_y - t_i + 10, B_24);
 					
-					// Àç°íÀÚ»ê È¸ÀüÀ²
+					// ìž¬ê³ ìžì‚° íšŒì „ìœ¨
 //*   		 
 					sorter.sort(f_sort, tmp_count);
 					
@@ -1082,7 +1082,7 @@ public class Menu_Five extends Activity {
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt3);
 						
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("Àç°íÀÚ»ê È¸ÀüÀ²  (È¸) ¡æ", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ìž¬ê³ ìžì‚° íšŒì „ìœ¨  (íšŒ) â†’", c_x + 10, c_y + 10, B_24);
 						
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -1118,32 +1118,32 @@ public class Menu_Five extends Activity {
 					}
 				}
 				canvas.drawBitmap(map006, width*0.075f, height*0.24f, pnt);
-//				canvas.drawText("Â÷Æ® ¼³¸í º¸±â", width - 200, height-20, pnt2);
+//				canvas.drawText("ì°¨íŠ¸ ì„¤ëª… ë³´ê¸°", width - 200, height-20, pnt2);
 			}
     		Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.e);
     		if(sub_menu == 1){
     			canvas.drawRect(width*0.25f, title_position-height*0.06f, width-width*0.025f, title_position+height*0.5625f, _Drawable2.getPaint());
-    			canvas.drawText("ÃÑÀÚ»ê È¸ÀüÀ²", width*0.2675f, title_position, W_24);
-    			canvas.drawText("¸ÅÃâÃ¤±Ç È¸ÀüÀ²", width*0.2675f, title_position+height*0.104f, W_24);
-    			canvas.drawText("Àç°íÀÚ»ê È¸ÀüÀ²", width*0.2675f, title_position+height*0.208f, W_24);
+    			canvas.drawText("ì´ìžì‚° íšŒì „ìœ¨", width*0.2675f, title_position, W_24);
+    			canvas.drawText("ë§¤ì¶œì±„ê¶Œ íšŒì „ìœ¨", width*0.2675f, title_position+height*0.104f, W_24);
+    			canvas.drawText("ìž¬ê³ ìžì‚° íšŒì „ìœ¨", width*0.2675f, title_position+height*0.208f, W_24);
     			canvas.drawBitmap(Icon_m, width-width*0.025f-Icon_m.getWidth(), title_position+height*0.5625f-Icon_m.getHeight(), pnt);
     		}
     		if(sub_menu == 2){
     			canvas.drawRect(width*0.025f, title_position+height*0.0271f, width*0.2375f, title_position+height*0.5625f, B_24);
     			canvas.drawRect(width*0.025f+1, title_position+height*0.0271f, width*0.2375f-1, title_position+height*0.5625f-1, W_24);
 //    			_Drawable2.getPaint().setColor(0xff0071d1);
-//    			canvas.drawText("¼öÀÍ¼º", 34, title_position+50, _Drawable2.getPaint());
+//    			canvas.drawText("ìˆ˜ìµì„±", 34, title_position+50, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xff0071d1);
     			_Drawable2.getPaint().setTextSize(24*c_height);
-    			canvas.drawText("¼öÀÍ¼º", width*0.0425f, title_position+height*0.104f, _Drawable2.getPaint());
+    			canvas.drawText("ìˆ˜ìµì„±", width*0.0425f, title_position+height*0.104f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xff079200);
-    			canvas.drawText("¾ÈÀü¼º", width*0.0425f, title_position+height*0.208f, _Drawable2.getPaint());
+    			canvas.drawText("ì•ˆì „ì„±", width*0.0425f, title_position+height*0.208f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffFFC600);
-    			canvas.drawText("¹è´ç¼º", width*0.0425f, title_position+height*0.312f, _Drawable2.getPaint());
+    			canvas.drawText("ë°°ë‹¹ì„±", width*0.0425f, title_position+height*0.312f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffA90000);
-    			canvas.drawText("¼ºÀå¼º", width*0.0425f, title_position+height*0.416f, _Drawable2.getPaint());
+    			canvas.drawText("ì„±ìž¥ì„±", width*0.0425f, title_position+height*0.416f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffA4A4A4);
-    			canvas.drawText("°¡Ä¡Æò°¡", width*0.0425f, title_position+height*0.52f, _Drawable2.getPaint());
+    			canvas.drawText("ê°€ì¹˜í‰ê°€", width*0.0425f, title_position+height*0.52f, _Drawable2.getPaint());
 //    			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
     		}
     	}

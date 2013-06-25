@@ -1,5 +1,5 @@
 /*
- * ¾ÈÀüÇÑ È¸»çÀÎ°¡?
+ * ì•ˆì „í•œ íšŒì‚¬ì¸ê°€?
  */
 package com.quantec.Stock.Activity;
 
@@ -75,11 +75,11 @@ public class Menu_Two extends Activity{
 	float[] f_sort2;
 	float[] f_origin2;
 	
-	float[] f_slong;				// ÁÖ°¡ º¯µ¿ Ãß¼¼
-	float[] f_sshort;				// ÁÖ°¡ º¯µ¿ Ãß¼¼
+	float[] f_slong;				// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+	float[] f_sshort;				// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 
-	float f_stmp;					// ÁÖ°¡ º¯µ¿ Ãß¼¼
-	int macd=0;					// ÁÖ°¡ º¯µ¿ Ãß¼¼
+	float f_stmp;					// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+	int macd=0;					// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 	int dur2;
 	int dur_s = 5, dur_l=20;
 	
@@ -89,45 +89,45 @@ public class Menu_Two extends Activity{
     
     AlertDialog.Builder bld;
     
-    String mTitle = "¾ÈÀü¼º";
+    String mTitle = "ì•ˆì „ì„±";
     
-    String exp1 = "[ºÎÃ¤ºñÀ² & À¯µ¿ ºñÀ²]\n" +
-    		"ºÎÃ¤ºñÀ² =  (À¯µ¿ºÎÃ¤ + ºñÀ¯µ¿ºÎÃ¤) / ÀÚ±âÀÚº» * 100\n" +
-    		"(200%ÀÌÇÏ ¾çÈ£, 400% ÀÌ»ó ºÒ·®)\n" +
-    		" * ºÎÃ¤ºñÀ²Àº Å¸ÀÎÀÚº»ÀÇ ÀÇÁ¸µµ¸¦ Ç¥½ÃÇÏ¸ç, °æ¿µºÐ¼®¿¡¼­ ±â¾÷ÀÇ °ÇÀü¼ºÀÇ Á¤µµ¸¦ ³ªÅ¸³»´Â ÁöÇ¥\n" +
-    		"À¯µ¿ºñÀ² = À¯µ¿ÀÚ»ê / À¯µ¿ºÎÃ¤ * 100\n" +
-    		"(150% ÀÌ»ó ¾çÈ£, 100% ÀÌÇÏ ºÒ·®)\n" +
-    		" * À¯µ¿ºñÀ²Àº ´Ü±â°£ ³»¿¡ °±¾Æ¾ß ÇÏ´Â ºÎÃ¤¸¦ ´Ü±â°£ ³»¿¡ Çö±ÝÈ­°¡ °¡´ÉÇÑ ÀÚ»êÀ¸·Î »óÈ¯ÇÒ ¼ö ÀÖ´ÂÁö ¿©ºÎ¸¦ ÃøÁ¤ÇÏ´Â ÁöÇ¥\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ºÎÃ¤ºñÀ²ÀÌ ³ôÀ»¼ö·Ï Àç¹«±¸Á¶°¡ ºÒ°ÇÀüÇÏ¹Ç·Î ÁöºÒ ´É·ÂÀÇ ¹®Á¦°¡ »ý±è\n" +
-    		"* À¯µ¿ºñÀ²Àº ±â¾÷ÀÌ º¸À¯ÇÏ´Â Áö±Þ ´É·Â, ¶Ç´Â ±× ½Å¿ë´É·ÂÀ» ÆÇ´ÜÇÏ±â À§ÇÏ¿© ¾²ÀÌ´Â °ÍÀ¸·Î ±× ºñÀ²ÀÌ Å¬¼ö·Ï ±×¸¸Å­ ±â¾÷ÀÇ Àç¹«À¯µ¿¼ºÀº Å©´Ù°í ÇÒ ¼ö ÀÖÀ½\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ºÎÃ¤ºñÀ²Àº ÀÏ¹ÝÀûÀ¸·Î 100% ÀÌÇÏ¸¦ Ç¥ÁØºñÀ²·Î º¸°í ÀÖÀ¸³ª °æ¿µÀÚ ÀÔÀå¿¡¼­´Â 1³âÀÌ³»¿¡ »óÈ¯ÇØ¾ß ÇÏ´Â ´Ü±âÃ¤¹«¿¡ ´ëÇÑ º¯Á¦ÀÇ ¾Ð¹ÚÀ» ¹ÞÁö ¾Ê´Â ÇÑ 200%±îÁö´Â ¾çÈ£ÇÑ ¼öÁØÀÌ¶ó°í ÇÒ ¼ö ÀÖÀ½\n" +
-    		"* À¯µ¿ºñÀ²ÀÌ ³ôÀ»¼ö·Ï È¸»çÀÇ ÁöºÒ ´É·ÂÀº Ä¿Áö³ª ÇÊ¿äÀÌ»óÀ¸·Î Ä«´Ù´Â °ÍÀº ÀÌºÎºÐ¸¸Å­À» ´Ù¸¥°÷¿¡ ÅõÀÚÇÏ¿© ¼öÀÍÀ» ¿Ã¸±¼ö ÀÖ´Â ±âÈ¸¸¦ »ó½ÇÇÏ°í ÀÖ´Ù´Â °ÍÀ» ÀÇ¹ÌÇÔ";
-    String exp2 = "[Â÷ÀÔ±Ý & Â÷ÀÔ±Ý ºñÁß]\n" +
-    		"Â÷ÀÔ±Ý ÀÇÁ¸µµ = (´Ü±âÂ÷ÀÔ±Ý + Àå±âÂ÷ÀÔ±Ý) / ÃÑÀÚ»ê * 100\n" +
-    		"(30%ÀÌÇÏ ¾çÈ£, 60% ÀÌ»ó ºÒ·®)\n" +
-    		" * ÃÑÀÚº» Áß¿¡¼­ ÀÌÀÚ¸¦ Áö±ÞÇÏ±â·Î ¾àÁ¤ÇÏ°í Á¶´ÞÇÑ Â÷ÀÔ±ÝÀÇ ºñÁßÀ» ³ªÅ¸³»´Â ÁöÇ¥\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* Â÷ÀÔ±ÝÀÇÁ¸µµ°¡ ³ôÀº ±â¾÷ÀÏ¼ö·Ï ±ÝÀ¶ºñ¿ë¿¡ ´ëÇÑ ºÎ´ãÀÌ °¡ÁßµÇ¾î ¼öÀÍ¼ºÀÌ ÀúÇÏµÇ°í, µû¶ó¼­ ¾ÈÁ¤¼ºµµ ³·¾ÆÁö°Ô µÈ´Ù\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ºÎÃ¤ Áß¿¡¼­µµ ½ÇÁ¦ ÀÌÀÚ ºñ¿ëÀ»  ÁöÃâÇØ¾ß ÇÏ´Â Â÷ÀÔ±ÝÀÇ ±Ô¸ð¸¦ °¡Áö°í Àç¹«Àû ¾ÈÁ¤¼ºÀ» µûÁö´Â °ÍÀÌ ´õ ÇÕ¸®ÀûÀÏ¼ö ÀÖ´Âµ¥ Â÷ÀÔ±Ý ÀÇÁ¸µµ´Â ÃÑ Â÷ÀÔ±Ý(»çÃ¤¿Í À¯µ¿¼º Àå±âÂ÷ÀÔ±Ý Æ÷ÇÔ)À» ÀÌ¿ë ÇÏ¹Ç·Î ºÎÃ¤ºñÀ²º¸´Ù ´õ Áß¿äÇÏ´Ù ÇÒ¼ö ÀÖÀ½";
-    String exp3 = "[ÀÌÀÚº¸»ó¹èÀ²]\n" +
-    		"ÀÌÀÚº¸»ó¹èÀ² = ¿µ¾÷ÀÌÀÍ /  ÀÌÀÚºñ¿ë\n" +
-    		"(2¹èÀÌ»ó ¾çÈ£, 1¹è¹Ì¸¸ ºÒ·®)\n" +
-    		" * ÇÑÇØ ¿µ¾÷ÀÌÀÍÀ¸·Î ÀÌÀÚºñ¿ëÀ» ÁöºÒÇÏ°í ³²´ÂÁö¸¦ ¾Ë¾Æº¸´Â ÁöÇ¥. \n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ±â¾÷ÀÇ Ã¤¹«»óÈ¯ ´É·ÂÀ» ³ªÅ¸³»´Â ÁöÇ¥·Î½á, ÀÌÀÚº¸»ó¹èÀ²ÀÌ 1ÀÌ¸é ¿µ¾÷È°µ¿À¸·Î¹ø µ·À¸·Î ÀÌÀÚ¸¦ ÁöºÒÇÏ°í ³ª¸é ³²´Â µ·ÀÌ ¾ø´Ù´Â ÀÇ¹Ì\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ÀÌÀÚº¸»ó¹èÀ²ÀÌ 1º¸´Ù Å©´Ù´Â °ÍÀº ¿µ¾÷ È°µ¿À¸·Î ¹ø µ·ÀÌ ±ÝÀ¶ºñ¿ëÀ» ÁöºÒÇÏ°í ³²´Â´Ù´Â ÀÇ¹ÌÀÌ¸ç, 1 ¹Ì¸¸ÀÌ¸é ¿µ¾÷È°µ¿¿¡¼­ Ã¢ÃâÇÑ ÀÌÀÍÀ¸·Î ±ÝÀ¶ºñ¿ëÁ¶Â÷ ÁöºÒÇÒ ¼ö ¾ø±â ¶§¹®¿¡ ÀáÀçÀû ºÎ½Ç±â¾÷À¸·Î º¼ ¼ö ÀÖÀ½";
-    String exp4 = "[ÀÚ±âÀÚº»ºñÀ²]\n" +
-    		"ÀÚ±âÀÚº» ºñÀ² = ÀÚ±âÀÚº» / ÃÑÀÚ»ê * 100\n" +
-    		"(30% ÀÌ»ó ¾çÈ£  20% ÀÌÇÏ ºÒ·®)\n" +
-    		" * ÀÚ±âÀÚº»ÀÌ Â÷ÁöÇÏ´Â ºñÁßÀ» ³ªÅ¸³»´Â ÁöÇ¥·Î¼­ ±â¾÷ ÀÇ¹«±¸Á¶ÀÇ °ÇÀü¼ºÀ» ³ªÅ¸³»´Â ÁöÇ¥\n\n" +
-    		"[ÁöÇ¥ºÐ¼®¹æ¹ý]\n" +
-    		"* ÀÚ±âÀÚº»Àº ±ÝÀ¶ºñ¿ëÀ» ºÎ´ãÇÏÁö ¾Ê´Â ÀÚ±ÝÀ¸·Î½á ÀÚ±âÀÚº» ºñÀ²ÀÌ ³ôÀ»¼ö·Ï ±â¾÷ÀÇ ¾ÈÁ¤¼ºÀÌ ³ô¾ÆÁø´Ù°í ÇÒ ¼ö ÀÖÀ½\n\n" +
-    		"[ÅõÀÚÆ÷ÀÎÆ®]\n" +
-    		"* ÀÏ¹ÝÀûÀÎ Ç¥ÁØ ºñÀ²Àº 50% ÀÌ»óÀ¸·Î º¸°í ÀÖÀ½";
+    String exp1 = "[ë¶€ì±„ë¹„ìœ¨ & ìœ ë™ ë¹„ìœ¨]\n" +
+    		"ë¶€ì±„ë¹„ìœ¨ =  (ìœ ë™ë¶€ì±„ + ë¹„ìœ ë™ë¶€ì±„) / ìžê¸°ìžë³¸ * 100\n" +
+    		"(200%ì´í•˜ ì–‘í˜¸, 400% ì´ìƒ ë¶ˆëŸ‰)\n" +
+    		" * ë¶€ì±„ë¹„ìœ¨ì€ íƒ€ì¸ìžë³¸ì˜ ì˜ì¡´ë„ë¥¼ í‘œì‹œí•˜ë©°, ê²½ì˜ë¶„ì„ì—ì„œ ê¸°ì—…ì˜ ê±´ì „ì„±ì˜ ì •ë„ë¥¼ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œ\n" +
+    		"ìœ ë™ë¹„ìœ¨ = ìœ ë™ìžì‚° / ìœ ë™ë¶€ì±„ * 100\n" +
+    		"(150% ì´ìƒ ì–‘í˜¸, 100% ì´í•˜ ë¶ˆëŸ‰)\n" +
+    		" * ìœ ë™ë¹„ìœ¨ì€ ë‹¨ê¸°ê°„ ë‚´ì— ê°šì•„ì•¼ í•˜ëŠ” ë¶€ì±„ë¥¼ ë‹¨ê¸°ê°„ ë‚´ì— í˜„ê¸ˆí™”ê°€ ê°€ëŠ¥í•œ ìžì‚°ìœ¼ë¡œ ìƒí™˜í•  ìˆ˜ ìžˆëŠ”ì§€ ì—¬ë¶€ë¥¼ ì¸¡ì •í•˜ëŠ” ì§€í‘œ\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ë¶€ì±„ë¹„ìœ¨ì´ ë†’ì„ìˆ˜ë¡ ìž¬ë¬´êµ¬ì¡°ê°€ ë¶ˆê±´ì „í•˜ë¯€ë¡œ ì§€ë¶ˆ ëŠ¥ë ¥ì˜ ë¬¸ì œê°€ ìƒê¹€\n" +
+    		"* ìœ ë™ë¹„ìœ¨ì€ ê¸°ì—…ì´ ë³´ìœ í•˜ëŠ” ì§€ê¸‰ ëŠ¥ë ¥, ë˜ëŠ” ê·¸ ì‹ ìš©ëŠ¥ë ¥ì„ íŒë‹¨í•˜ê¸° ìœ„í•˜ì—¬ ì“°ì´ëŠ” ê²ƒìœ¼ë¡œ ê·¸ ë¹„ìœ¨ì´ í´ìˆ˜ë¡ ê·¸ë§Œí¼ ê¸°ì—…ì˜ ìž¬ë¬´ìœ ë™ì„±ì€ í¬ë‹¤ê³  í•  ìˆ˜ ìžˆìŒ\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ë¶€ì±„ë¹„ìœ¨ì€ ì¼ë°˜ì ìœ¼ë¡œ 100% ì´í•˜ë¥¼ í‘œì¤€ë¹„ìœ¨ë¡œ ë³´ê³  ìžˆìœ¼ë‚˜ ê²½ì˜ìž ìž…ìž¥ì—ì„œëŠ” 1ë…„ì´ë‚´ì— ìƒí™˜í•´ì•¼ í•˜ëŠ” ë‹¨ê¸°ì±„ë¬´ì— ëŒ€í•œ ë³€ì œì˜ ì••ë°•ì„ ë°›ì§€ ì•ŠëŠ” í•œ 200%ê¹Œì§€ëŠ” ì–‘í˜¸í•œ ìˆ˜ì¤€ì´ë¼ê³  í•  ìˆ˜ ìžˆìŒ\n" +
+    		"* ìœ ë™ë¹„ìœ¨ì´ ë†’ì„ìˆ˜ë¡ íšŒì‚¬ì˜ ì§€ë¶ˆ ëŠ¥ë ¥ì€ ì»¤ì§€ë‚˜ í•„ìš”ì´ìƒìœ¼ë¡œ ì¹´ë‹¤ëŠ” ê²ƒì€ ì´ë¶€ë¶„ë§Œí¼ì„ ë‹¤ë¥¸ê³³ì— íˆ¬ìží•˜ì—¬ ìˆ˜ìµì„ ì˜¬ë¦´ìˆ˜ ìžˆëŠ” ê¸°íšŒë¥¼ ìƒì‹¤í•˜ê³  ìžˆë‹¤ëŠ” ê²ƒì„ ì˜ë¯¸í•¨";
+    String exp2 = "[ì°¨ìž…ê¸ˆ & ì°¨ìž…ê¸ˆ ë¹„ì¤‘]\n" +
+    		"ì°¨ìž…ê¸ˆ ì˜ì¡´ë„ = (ë‹¨ê¸°ì°¨ìž…ê¸ˆ + ìž¥ê¸°ì°¨ìž…ê¸ˆ) / ì´ìžì‚° * 100\n" +
+    		"(30%ì´í•˜ ì–‘í˜¸, 60% ì´ìƒ ë¶ˆëŸ‰)\n" +
+    		" * ì´ìžë³¸ ì¤‘ì—ì„œ ì´ìžë¥¼ ì§€ê¸‰í•˜ê¸°ë¡œ ì•½ì •í•˜ê³  ì¡°ë‹¬í•œ ì°¨ìž…ê¸ˆì˜ ë¹„ì¤‘ì„ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œ\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ì°¨ìž…ê¸ˆì˜ì¡´ë„ê°€ ë†’ì€ ê¸°ì—…ì¼ìˆ˜ë¡ ê¸ˆìœµë¹„ìš©ì— ëŒ€í•œ ë¶€ë‹´ì´ ê°€ì¤‘ë˜ì–´ ìˆ˜ìµì„±ì´ ì €í•˜ë˜ê³ , ë”°ë¼ì„œ ì•ˆì •ì„±ë„ ë‚®ì•„ì§€ê²Œ ëœë‹¤\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ë¶€ì±„ ì¤‘ì—ì„œë„ ì‹¤ì œ ì´ìž ë¹„ìš©ì„  ì§€ì¶œí•´ì•¼ í•˜ëŠ” ì°¨ìž…ê¸ˆì˜ ê·œëª¨ë¥¼ ê°€ì§€ê³  ìž¬ë¬´ì  ì•ˆì •ì„±ì„ ë”°ì§€ëŠ” ê²ƒì´ ë” í•©ë¦¬ì ì¼ìˆ˜ ìžˆëŠ”ë° ì°¨ìž…ê¸ˆ ì˜ì¡´ë„ëŠ” ì´ ì°¨ìž…ê¸ˆ(ì‚¬ì±„ì™€ ìœ ë™ì„± ìž¥ê¸°ì°¨ìž…ê¸ˆ í¬í•¨)ì„ ì´ìš© í•˜ë¯€ë¡œ ë¶€ì±„ë¹„ìœ¨ë³´ë‹¤ ë” ì¤‘ìš”í•˜ë‹¤ í• ìˆ˜ ìžˆìŒ";
+    String exp3 = "[ì´ìžë³´ìƒë°°ìœ¨]\n" +
+    		"ì´ìžë³´ìƒë°°ìœ¨ = ì˜ì—…ì´ìµ /  ì´ìžë¹„ìš©\n" +
+    		"(2ë°°ì´ìƒ ì–‘í˜¸, 1ë°°ë¯¸ë§Œ ë¶ˆëŸ‰)\n" +
+    		" * í•œí•´ ì˜ì—…ì´ìµìœ¼ë¡œ ì´ìžë¹„ìš©ì„ ì§€ë¶ˆí•˜ê³  ë‚¨ëŠ”ì§€ë¥¼ ì•Œì•„ë³´ëŠ” ì§€í‘œ. \n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ê¸°ì—…ì˜ ì±„ë¬´ìƒí™˜ ëŠ¥ë ¥ì„ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œë¡œì¨, ì´ìžë³´ìƒë°°ìœ¨ì´ 1ì´ë©´ ì˜ì—…í™œë™ìœ¼ë¡œë²ˆ ëˆìœ¼ë¡œ ì´ìžë¥¼ ì§€ë¶ˆí•˜ê³  ë‚˜ë©´ ë‚¨ëŠ” ëˆì´ ì—†ë‹¤ëŠ” ì˜ë¯¸\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ì´ìžë³´ìƒë°°ìœ¨ì´ 1ë³´ë‹¤ í¬ë‹¤ëŠ” ê²ƒì€ ì˜ì—… í™œë™ìœ¼ë¡œ ë²ˆ ëˆì´ ê¸ˆìœµë¹„ìš©ì„ ì§€ë¶ˆí•˜ê³  ë‚¨ëŠ”ë‹¤ëŠ” ì˜ë¯¸ì´ë©°, 1 ë¯¸ë§Œì´ë©´ ì˜ì—…í™œë™ì—ì„œ ì°½ì¶œí•œ ì´ìµìœ¼ë¡œ ê¸ˆìœµë¹„ìš©ì¡°ì°¨ ì§€ë¶ˆí•  ìˆ˜ ì—†ê¸° ë•Œë¬¸ì— ìž ìž¬ì  ë¶€ì‹¤ê¸°ì—…ìœ¼ë¡œ ë³¼ ìˆ˜ ìžˆìŒ";
+    String exp4 = "[ìžê¸°ìžë³¸ë¹„ìœ¨]\n" +
+    		"ìžê¸°ìžë³¸ ë¹„ìœ¨ = ìžê¸°ìžë³¸ / ì´ìžì‚° * 100\n" +
+    		"(30% ì´ìƒ ì–‘í˜¸  20% ì´í•˜ ë¶ˆëŸ‰)\n" +
+    		" * ìžê¸°ìžë³¸ì´ ì°¨ì§€í•˜ëŠ” ë¹„ì¤‘ì„ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œë¡œì„œ ê¸°ì—… ì˜ë¬´êµ¬ì¡°ì˜ ê±´ì „ì„±ì„ ë‚˜íƒ€ë‚´ëŠ” ì§€í‘œ\n\n" +
+    		"[ì§€í‘œë¶„ì„ë°©ë²•]\n" +
+    		"* ìžê¸°ìžë³¸ì€ ê¸ˆìœµë¹„ìš©ì„ ë¶€ë‹´í•˜ì§€ ì•ŠëŠ” ìžê¸ˆìœ¼ë¡œì¨ ìžê¸°ìžë³¸ ë¹„ìœ¨ì´ ë†’ì„ìˆ˜ë¡ ê¸°ì—…ì˜ ì•ˆì •ì„±ì´ ë†’ì•„ì§„ë‹¤ê³  í•  ìˆ˜ ìžˆìŒ\n\n" +
+    		"[íˆ¬ìží¬ì¸íŠ¸]\n" +
+    		"* ì¼ë°˜ì ì¸ í‘œì¤€ ë¹„ìœ¨ì€ 50% ì´ìƒìœ¼ë¡œ ë³´ê³  ìžˆìŒ";
     
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -221,7 +221,7 @@ public class Menu_Two extends Activity{
 //							GV.setStockD(null);
 							finish();
 						}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼						
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸						
 						else if( x1 < (float) (MyApp.getDisplay().getWidth()*0.80)+width*0.0625f && x1 > (float) (MyApp.getDisplay().getWidth()*0.80) && y1 > title_position-height*0.09f && y1 < title_position+height*0.01f){
 //							GV.setStockD(null);
 							if(macd==0)
@@ -229,14 +229,14 @@ public class Menu_Two extends Activity{
 							else
 								macd=0;
 						}
-//*///ÁÖ°¡ º¯µ¿ Ãß¼¼
-						else if( y1 > height*0.24f && y1 < height*0.327f && x1 > width*0.075f && x1 < width*0.231f){ //°¡·Î Â÷Æ®¼³¸í ¹öÆ° À§Ä¡
+//*///ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+						else if( y1 > height*0.24f && y1 < height*0.327f && x1 > width*0.075f && x1 < width*0.231f){ //ê°€ë¡œ ì°¨íŠ¸ì„¤ëª… ë²„íŠ¼ ìœ„ì¹˜
 							view_val = -1;
 							if(GV.getSRV() == 0) bld.setMessage(exp1);
 							else if(GV.getSRV() == 1) bld.setMessage(exp2);
 							else if(GV.getSRV() == 2) bld.setMessage(exp3);
 							else if(GV.getSRV() == 3) bld.setMessage(exp4);
-							bld.setPositiveButton("´Ý±â", new DialogInterface.OnClickListener() {
+							bld.setPositiveButton("ë‹«ê¸°", new DialogInterface.OnClickListener() {
 								
 								public void onClick(DialogInterface dialog, int which) {
 								}
@@ -364,7 +364,7 @@ public class Menu_Two extends Activity{
 		Bitmap map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm2);
 		Bitmap map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm2);
 
-		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // ÁÖ°¡ º¯µ¿ Ãß¼¼
+		Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // ì£¼ê°€ ë³€ë™ ì¶”ì„¸
 		
 		Bitmap c01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_up);
 		Bitmap c02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_mid);
@@ -436,10 +436,10 @@ public class Menu_Two extends Activity{
     		W_24.setTextSize(24*c_height);
     		pnt3.setColor(0xff0071d1);//blue
     		pnt3.setTextSize(18*c_height);
-    		pnt3.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤ 
+    		pnt3.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì • 
     		pnt4.setColor(0xff079200);//green
     		pnt4.setTextSize(18*c_height);
-    		pnt4.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤ 
+    		pnt4.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì • 
     		B_18.setColor(Color.BLACK);
     		B_18.setTextSize(18*c_height);
     		W_18.setColor(Color.WHITE);
@@ -448,9 +448,9 @@ public class Menu_Two extends Activity{
     		B_24.setTextSize(24*c_height);
     		
     		stock_C1.setColor(0xff079200);//yellow
-    		stock_C1.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤
+    		stock_C1.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì •
     		stock_C2.setColor(0xffFFC600);//yellow
-    		stock_C2.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤
+    		stock_C2.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì •
     		
     		pnt.setAntiAlias(true);
     		W_24.setAntiAlias(true);
@@ -502,7 +502,7 @@ public class Menu_Two extends Activity{
 
 
 //////////////////////////////////////////////////////
-//¿¬µµ/ ºÐ±â °è»ê	    			
+//ì—°ë„/ ë¶„ê¸° ê³„ì‚°	    			
 					int tmp_dx = 0, tmp_qx;					
 					
 					for(int dx = 0; dx< duration; dx++){
@@ -550,8 +550,8 @@ public class Menu_Two extends Activity{
 				if(GV.getSRV() == 0){
 ////////////////////////////////////////////view 1 begin		
 					
-					canvas.drawText("ºÎÃ¤ºñÀ² & À¯µ¿ºñÀ²", width*0.2675f, title_position, W_24);
-					//canvas.drawText(duration + " ºÐ±â  ¸ÅÃâ Áö¼ö  - ¼øÀÌÀÍ Áö¼ö ", display2.getWidth()/2 - 120, display2.getHeight()-250, W_24);
+					canvas.drawText("ë¶€ì±„ë¹„ìœ¨ & ìœ ë™ë¹„ìœ¨", width*0.2675f, title_position, W_24);
+					//canvas.drawText(duration + " ë¶„ê¸°  ë§¤ì¶œ ì§€ìˆ˜  - ìˆœì´ìµ ì§€ìˆ˜ ", display2.getWidth()/2 - 120, display2.getHeight()-250, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -591,14 +591,14 @@ public class Menu_Two extends Activity{
 					canvas.drawLine(b_x, c_y - t_i, b_x+l_x, c_y - t_i, pnt4);
 					canvas.drawCircle(c_x, c_y - t_i, r_c, pnt4);
 					canvas.drawCircle(c_x, c_y - t_i, r_c -1, W_24);
-//					canvas.drawText("À¯µ¿ºñÀ²", c_x + 10, c_y - t_i + 10, B_24);
+//					canvas.drawText("ìœ ë™ë¹„ìœ¨", c_x + 10, c_y - t_i + 10, B_24);
 					
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("ºÎÃ¤ºñÀ²", c_x + 10, c_y + 10, B_24);
+//					canvas.drawText("ë¶€ì±„ë¹„ìœ¨", c_x + 10, c_y + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -613,7 +613,7 @@ public class Menu_Two extends Activity{
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -640,8 +640,8 @@ public class Menu_Two extends Activity{
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
-					// À¯µ¿ºñÀ²
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+					// ìœ ë™ë¹„ìœ¨
 					//*   		 
 					sorter.sort(f_sort, duration);
 					
@@ -675,7 +675,7 @@ public class Menu_Two extends Activity{
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 						
-						canvas.drawText("À¯µ¿ºñÀ² (%) ¡ç", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ìœ ë™ë¹„ìœ¨ (%) â†", c_x + 10, c_y - t_i + 10, B_24);
 						
 						for(int dr = 0; dr < duration; dr++)
 							if(posX[dr] > width*0.067f){
@@ -683,9 +683,9 @@ public class Menu_Two extends Activity{
 							canvas.drawCircle(posX[dr], posY[dr], 3, W_24);
 						}
 					}else
-						canvas.drawText("À¯µ¿ºñÀ²", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ìœ ë™ë¹„ìœ¨", c_x + 10, c_y - t_i + 10, B_24);
 						
-					// ºÎÃ¤ºñÀ²		 
+					// ë¶€ì±„ë¹„ìœ¨		 
 					sorter.sort(f_sort2, duration);
 					
 					f_max = f_sort2[duration-1];
@@ -700,7 +700,7 @@ public class Menu_Two extends Activity{
 							canvas.drawLine(posX[dr], posY[dr], posX[dr+1], posY[dr+1], pnt3);
 										
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("ºÎÃ¤ºñÀ²(%) ¡æ", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ë¶€ì±„ë¹„ìœ¨(%) â†’", c_x + 10, c_y + 10, B_24);
 
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -759,7 +759,7 @@ public class Menu_Two extends Activity{
 				}else if(GV.getSRV() == 1){
 ////////////////////////////////////////////view 2 begin
 			    	
-					canvas.drawText("Â÷ÀÔ±Ý & Â÷ÀÔ±Ý ºñÁß", width*0.2675f, title_position, W_24);
+					canvas.drawText("ì°¨ìž…ê¸ˆ & ì°¨ìž…ê¸ˆ ë¹„ì¤‘", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -799,14 +799,14 @@ public class Menu_Two extends Activity{
 					canvas.drawLine(b_x, c_y - t_i, b_x+l_x, c_y - t_i, pnt4);
 					canvas.drawCircle(c_x, c_y - t_i, r_c, pnt4);
 					canvas.drawCircle(c_x, c_y - t_i, r_c -1, W_24);
-//					canvas.drawText("Â÷ÀÔ±Ý", c_x + 10, c_y - t_i + 10, B_24);
+//					canvas.drawText("ì°¨ìž…ê¸ˆ", c_x + 10, c_y - t_i + 10, B_24);
 					
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("Â÷ÀÔ±Ý ºñÁß", c_x + 10, c_y + 10, B_24);
+//					canvas.drawText("ì°¨ìž…ê¸ˆ ë¹„ì¤‘", c_x + 10, c_y + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -821,7 +821,7 @@ public class Menu_Two extends Activity{
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -848,8 +848,8 @@ public class Menu_Two extends Activity{
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
-					// Â÷ÀÔ±Ý
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+					// ì°¨ìž…ê¸ˆ
 					//*   		 
 					sorter.sort(tmp_sort, duration);
 					
@@ -876,7 +876,7 @@ public class Menu_Two extends Activity{
 						v3 = tmp_D.v3;
 						v4 = tmp_D.v4;
 						
-						canvas.drawText("Â÷ÀÔ±Ý"+ uWon1 + " ¡ç", c_x + 10, c_y - t_i + 10, B_24);
+						canvas.drawText("ì°¨ìž…ê¸ˆ"+ uWon1 + " â†", c_x + 10, c_y - t_i + 10, B_24);
 						
 						canvas.drawText(v_max1, 5, height*0.26f, W_18);
 						canvas.drawText(v4, 5, height*0.35f, W_18);
@@ -898,7 +898,7 @@ public class Menu_Two extends Activity{
 						}
 					}
 					
-					// Â÷ÀÔ±Ý ºñÁß
+					// ì°¨ìž…ê¸ˆ ë¹„ì¤‘
 					//*   		 
 					sorter.sort(f_sort, duration);
 					
@@ -937,7 +937,7 @@ public class Menu_Two extends Activity{
 							canvas.drawCircle(posX[dr], posY[dr], 4, pnt3);
 							canvas.drawCircle(posX[dr], posY[dr], 3, W_24);
 						}
-						canvas.drawText("Â÷ÀÔ±Ý ºñÁß (%) ¡æ", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ì°¨ìž…ê¸ˆ ë¹„ì¤‘ (%) â†’", c_x + 10, c_y + 10, B_24);
 					}
 					
 					if(view_val >= 0 && view_val < 15){
@@ -973,7 +973,7 @@ public class Menu_Two extends Activity{
 				}else if(GV.getSRV() == 2){
 //////////////////////////////////////////////view 3 begin
 			    	
-					canvas.drawText("ÀÌÀÚº¸»ó¹èÀ²", width*0.2675f, title_position, W_24);
+					canvas.drawText("ì´ìžë³´ìƒë°°ìœ¨", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -1011,9 +1011,9 @@ public class Menu_Two extends Activity{
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("ÀÌÀÚº¸»ó¹èÀ²", c_x + 10, c_y + 10, B_24);
+//					canvas.drawText("ì´ìžë³´ìƒë°°ìœ¨", c_x + 10, c_y + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -1028,7 +1028,7 @@ public class Menu_Two extends Activity{
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -1055,8 +1055,8 @@ public class Menu_Two extends Activity{
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
-					// ÀÌÀÚº¸»ó¹èÀ²
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+					// ì´ìžë³´ìƒë°°ìœ¨
 					//*	    	 
 					sorter.sort(f_sort, duration);
 					
@@ -1072,7 +1072,7 @@ public class Menu_Two extends Activity{
 							canvas.drawLine(posX[dr], posY[dr], posX[dr+1], posY[dr+1], pnt3);
 										
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("ÀÌÀÚº¸»ó¹èÀ²", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ì´ìžë³´ìƒë°°ìœ¨", c_x + 10, c_y + 10, B_24);
 						
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -1110,7 +1110,7 @@ public class Menu_Two extends Activity{
 				}else if(GV.getSRV() == 3){
 //////////////////////////////////////////////view 4 begin
 					
-					canvas.drawText("ÀÚ±âÀÚº»ºñÀ²", width*0.2675f, title_position, W_24);
+					canvas.drawText("ìžê¸°ìžë³¸ë¹„ìœ¨", width*0.2675f, title_position, W_24);
 
 					if(opt_dur == 0){
 						for(int dx = 0; dx< (duration+1)*12; dx++){
@@ -1145,9 +1145,9 @@ public class Menu_Two extends Activity{
 					canvas.drawLine(b_x, c_y, b_x+l_x, c_y, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c, pnt3);
 					canvas.drawCircle(c_x, c_y, r_c -1, W_24);
-//					canvas.drawText("ÀÚ±âÀÚº»ºñÀ²", c_x + 10, c_y + 10, B_24);
+//					canvas.drawText("ìžê¸°ìžë³¸ë¹„ìœ¨", c_x + 10, c_y + 10, B_24);
 					
-					// ÁÖ°¡		 
+					// ì£¼ê°€		 
 					sorter.sort(tmp_sort_sv, (duration+1)*12);
 					
 					tmp_max = tmp_sort_sv[(duration+1)*12-1];
@@ -1162,7 +1162,7 @@ public class Menu_Two extends Activity{
 						if(tmp_origin_sv[dr+1] != -1 && posX_sv[dr] > width*0.067f)
 							canvas.drawLine(posX_sv[dr], posY_sv[dr], posX_sv[dr+1], posY_sv[dr+1], pnt);
 					}
-//*// ÁÖ°¡ º¯µ¿ Ãß¼¼					
+//*// ì£¼ê°€ ë³€ë™ ì¶”ì„¸					
 					for(int dy = dur_s-1; dy<(duration+1)*12 ; dy++){
 						f_stmp = 0;
 						for(int durt=0; durt<dur_s; durt++){
@@ -1189,8 +1189,8 @@ public class Menu_Two extends Activity{
 								canvas.drawLine(posX_sv[dr], f_slong[dr], posX_sv[dr+1], f_slong[dr+1], stock_C2);
 						}
 					}
-//*/// ÁÖ°¡ º¯µ¿ Ãß¼¼
-					// ÀÚ±âÀÚº»ºñÀ²
+//*/// ì£¼ê°€ ë³€ë™ ì¶”ì„¸
+					// ìžê¸°ìžë³¸ë¹„ìœ¨
 					//*   		 
 					sorter.sort(f_sort, duration);
 					
@@ -1206,7 +1206,7 @@ public class Menu_Two extends Activity{
 							canvas.drawLine(posX[dr], posY[dr], posX[dr+1], posY[dr+1], pnt3);
 										
 					if(dis_ori == 1 || dis_ori == 3){
-						canvas.drawText("ÀÚ±âÀÚº»ºñÀ²", c_x + 10, c_y + 10, B_24);
+						canvas.drawText("ìžê¸°ìžë³¸ë¹„ìœ¨", c_x + 10, c_y + 10, B_24);
 						
 						tmp_D = null;
 						tmp_D = mD.Fdigit(f_max, f_min);
@@ -1242,15 +1242,15 @@ public class Menu_Two extends Activity{
 					}
 				}
 				canvas.drawBitmap(map006, width*0.075f, height*0.24f, pnt);
-//				canvas.drawText("Â÷Æ® ¼³¸í º¸±â", width - 200, height-20, pnt2);
+//				canvas.drawText("ì°¨íŠ¸ ì„¤ëª… ë³´ê¸°", width - 200, height-20, pnt2);
 			}
     		Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.s);
     		if(sub_menu == 1){
     			canvas.drawRect(width*0.25f, title_position-height*0.06f, width-width*0.025f, title_position+height*0.5625f, _Drawable2.getPaint());
-    			canvas.drawText("ºÎÃ¤ºñÀ² & À¯µ¿ºñÀ²", width*0.2675f, title_position, W_24);
-    			canvas.drawText("Â÷ÀÔ±Ý & Â÷ÀÔ±ÝºñÁß", width*0.2675f, title_position+height*0.104f, W_24);
-    			canvas.drawText("ÀÌÀÚº¸»ó¹èÀ²", width*0.2675f, title_position+height*0.208f, W_24);
-    			canvas.drawText("ÀÚ±âÀÚº»ºñÀ²", width*0.2675f, title_position+height*0.312f, W_24);
+    			canvas.drawText("ë¶€ì±„ë¹„ìœ¨ & ìœ ë™ë¹„ìœ¨", width*0.2675f, title_position, W_24);
+    			canvas.drawText("ì°¨ìž…ê¸ˆ & ì°¨ìž…ê¸ˆë¹„ì¤‘", width*0.2675f, title_position+height*0.104f, W_24);
+    			canvas.drawText("ì´ìžë³´ìƒë°°ìœ¨", width*0.2675f, title_position+height*0.208f, W_24);
+    			canvas.drawText("ìžê¸°ìžë³¸ë¹„ìœ¨", width*0.2675f, title_position+height*0.312f, W_24);
     			canvas.drawBitmap(Icon_m, width-width*0.025f-Icon_m.getWidth(), title_position+height*0.5625f-Icon_m.getHeight(), pnt);
     		}
     		if(sub_menu == 2){
@@ -1258,15 +1258,15 @@ public class Menu_Two extends Activity{
     			canvas.drawRect(width*0.025f+1, title_position+height*0.0271f, width*0.2375f-1, title_position+height*0.5625f-1, W_24);
     			_Drawable2.getPaint().setColor(0xff0071d1);
     			_Drawable2.getPaint().setTextSize(24*c_height);
-    			canvas.drawText("¼öÀÍ¼º", width*0.0425f, title_position+height*0.104f, _Drawable2.getPaint());
+    			canvas.drawText("ìˆ˜ìµì„±", width*0.0425f, title_position+height*0.104f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffFFC600);
-    			canvas.drawText("¹è´ç¼º", width*0.0425f, title_position+height*0.208f, _Drawable2.getPaint());
+    			canvas.drawText("ë°°ë‹¹ì„±", width*0.0425f, title_position+height*0.208f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffA90000);
-    			canvas.drawText("¼ºÀå¼º", width*0.0425f, title_position+height*0.312f, _Drawable2.getPaint());
+    			canvas.drawText("ì„±ìž¥ì„±", width*0.0425f, title_position+height*0.312f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xff5B00A9);
-    			canvas.drawText("È¿À²¼º", width*0.0425f, title_position+height*0.416f, _Drawable2.getPaint());
+    			canvas.drawText("íš¨ìœ¨ì„±", width*0.0425f, title_position+height*0.416f, _Drawable2.getPaint());
     			_Drawable2.getPaint().setColor(0xffA4A4A4);
-    			canvas.drawText("°¡Ä¡Æò°¡", width*0.0425f, title_position+height*0.52f, _Drawable2.getPaint());
+    			canvas.drawText("ê°€ì¹˜í‰ê°€", width*0.0425f, title_position+height*0.52f, _Drawable2.getPaint());
 //    			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
     		}
     	}

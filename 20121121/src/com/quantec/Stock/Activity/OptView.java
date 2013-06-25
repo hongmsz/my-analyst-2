@@ -48,10 +48,10 @@ public class OptView extends Activity{
 	private static final float D_width = 480f;
 	
 	Intent Ctest, CHint;
-	int begin_q = 201201;		//¿É¼Ç ¸Ş´º »ı¼º
-	int end_q;						//¿É¼Ç ¸Ş´º »ı¼º
-	int this_w = 20120702;		//¿É¼Ç ¸Ş´º »ı¼º
-	int tmp_k;		//¿É¼Ç ¸Ş´º »ı¼º
+	int begin_q = 201201;		//ì˜µì…˜ ë©”ë‰´ ìƒì„±
+	int end_q;						//ì˜µì…˜ ë©”ë‰´ ìƒì„±
+	int this_w = 20120702;		//ì˜µì…˜ ë©”ë‰´ ìƒì„±
+	int tmp_k;		//ì˜µì…˜ ë©”ë‰´ ìƒì„±
 	
 	int view=0;
 	int lit;
@@ -128,12 +128,12 @@ private void createContentsContainer(){
 				
 /*				for(tmp_k=0; tmp_k<10;tmp_k++){
 					if(y1 > (float)(60+(tmp_k*(height-110)/11)) && y1 < (float)(60+((tmp_k+1)*(height-110)/11)) && (view_page_num+tmp_k)<GV.getOptD().dNum){
-						dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+tmp_k]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+						dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+tmp_k]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 						new Thread(new Runnable() {
 							
 							public void run() {
 								tmp = GV.getOptD().m_Jcode[view_page_num+tmp_k];
-								tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+								tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 								GV.setStockD(tmp_stock);
 								tmp_stock = getSValueA(tmp);
 								tmp_stock = getWSValue(tmp);
@@ -148,13 +148,13 @@ private void createContentsContainer(){
 //*					
 					if(Math.abs(y2-y1)<40){
 	            		if(y1 > menu_pos && y1 < menu_pos+menu_dist && view_page_num+0<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+0]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+0]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+0];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -164,13 +164,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist && y1 < menu_pos+menu_dist*2 && view_page_num+1<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+1]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+1]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+1];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -180,13 +180,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*2 && y1 < menu_pos+menu_dist*3  && view_page_num+2<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+2]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+2]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+2];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -196,13 +196,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*3 && y1 < menu_pos+menu_dist*4  && view_page_num+3<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+3]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+3]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+3];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -212,13 +212,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*4 && y1 < menu_pos+menu_dist*5  && view_page_num+4<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+4]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+4]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+4];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -228,13 +228,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*5 && y1 < menu_pos+menu_dist*6  && view_page_num+5<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+5]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+5]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+5];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -244,13 +244,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*6 && y1 < menu_pos+menu_dist*7  && view_page_num+6<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+6]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+6]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+6];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -260,13 +260,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*7 && y1 < menu_pos+menu_dist*8  && view_page_num+7<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+7]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+7]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+7];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -276,13 +276,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*8 && y1 < menu_pos+menu_dist*9 && view_page_num+8<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+8]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+8]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+8];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -292,13 +292,13 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*9 && y1 < menu_pos+menu_dist*10 && view_page_num+9<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+9]+" Á¤º¸ ºÒ·¯¿À´Â  Áß..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+9]+" ì •ë³´ ë¶ˆëŸ¬ì˜¤ëŠ”  ì¤‘..", true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
 	            		        	qt_count = 201101;
 	            		        	tmp = GV.getOptD().m_Jcode[view_page_num+9];
-	                    			tmp_stock = getSValue(tmp); // 20111024 ¼öÁ¤
+	                    			tmp_stock = getSValue(tmp); // 20111024 ìˆ˜ì •
 	                    			GV.setStockD(tmp_stock);
 	                    			tmp_stock = getSValueA(tmp);
 	                    			tmp_stock = getWSValue(tmp);
@@ -344,7 +344,7 @@ private void createContentsContainer(){
     			B_24.setTextSize(20);
     		
     		B_24.setAntiAlias(true);
-    		B_24.setStrokeWidth(3);	// ¼± ±½±â Á¶Á¤ 
+    		B_24.setStrokeWidth(3);	// ì„  êµµê¸° ì¡°ì • 
     		
     		W_24.setColor(Color.WHITE);
     		if(width>480)
@@ -357,17 +357,17 @@ private void createContentsContainer(){
     		canvas.drawBitmap(Icon_m, 0, 10, B_24);
     		switch(GV.getOptD().dType){
     			case 1:
-    				canvas.drawText("- EPS Áõ°¡À² ±âÁØ", width*5/9, 50, W_24);
+    				canvas.drawText("- EPS ì¦ê°€ìœ¨ ê¸°ì¤€", width*5/9, 50, W_24);
     				break;
     			case 2:
-    				canvas.drawText("- ¸ÅÃâ¾× Áõ°¡À² ±âÁØ", width*5/9, 50, W_24);
+    				canvas.drawText("- ë§¤ì¶œì•¡ ì¦ê°€ìœ¨ ê¸°ì¤€", width*5/9, 50, W_24);
     				break;
     			case 3:
-    				canvas.drawText("- ¿µ¾÷ÀÌÀÍ Áõ°¡À² ±âÁØ", width*5/9, 50, W_24);
+    				canvas.drawText("- ì˜ì—…ì´ìµ ì¦ê°€ìœ¨ ê¸°ì¤€", width*5/9, 50, W_24);
     				break;
     		}
     			
-//			canvas.drawText("[°Ë»ö °á°ú]", 20, 20, B_24);
+//			canvas.drawText("[ê²€ìƒ‰ ê²°ê³¼]", 20, 20, B_24);
     		for(int k = 0 ; k<10; k++)
     			if(view_page_num+k < GV.getOptD().dNum){
     				canvas.drawBitmap(Bg_m, 0, menu_pos+menu_dist*k, B_24);
@@ -386,7 +386,7 @@ private void createContentsContainer(){
     		
     		if(view_page_num-9 > 0){
     			canvas.drawBitmap(Nav_L, 0, menu_pos+menu_dist*10, B_24);
-/*    			String tmp_001 = " < ÀÌÀü ÆäÀÌÁö";
+/*    			String tmp_001 = " < ì´ì „ í˜ì´ì§€";
     			String tmp_002 = "    ["+(view_page_num-9)+" ~ "+(view_page_num)+"]";
     			canvas.drawText(tmp_001, 20, height-50, W_24);
     			canvas.drawText(tmp_002, 20, height-20, W_24);
@@ -394,18 +394,18 @@ private void createContentsContainer(){
     		
     		if(view_page_num+11 < GV.getOptD().dNum){
     			canvas.drawBitmap(Nav_R, width-Nav_R.getWidth(), menu_pos+menu_dist*10, B_24);
-/*    			String tmp_003 = "´ÙÀ½ ÆäÀÌÁö > ";
+/*    			String tmp_003 = "ë‹¤ìŒ í˜ì´ì§€ > ";
     			String tmp_004 = "["+(view_page_num+11)+" ~ "+(view_page_num+20)+"] ";
     			canvas.drawText(tmp_003, width-tmp_003.length()*20-20, height-50, W_24);
     			canvas.drawText(tmp_004, width-tmp_004.length()*15-20, height-20, W_24);
 */    		}
 /*    		
-    		canvas.drawText("½Ã°¡ÃÑ¾× ±âÁØ", 20, 650, B_24);
-    		canvas.drawText("ÀüÃ¼ º¸±â", 20, 680, B_24);
-    		canvas.drawText("500¾ï ÀÌ»ó",20+GV.getDisplay().getWidth()/5, 680, B_24);
-    		canvas.drawText("1000¾ï ÀÌ»ó",20+GV.getDisplay().getWidth()/5*2, 680, B_24);
-    		canvas.drawText("2000¾ï ÀÌ»ó", 20+GV.getDisplay().getWidth()/5*3, 680, B_24);
-    		canvas.drawText("5000¾ï ÀÌ»ó", 20+GV.getDisplay().getWidth()/5*4, 680, B_24);
+    		canvas.drawText("ì‹œê°€ì´ì•¡ ê¸°ì¤€", 20, 650, B_24);
+    		canvas.drawText("ì „ì²´ ë³´ê¸°", 20, 680, B_24);
+    		canvas.drawText("500ì–µ ì´ìƒ",20+GV.getDisplay().getWidth()/5, 680, B_24);
+    		canvas.drawText("1000ì–µ ì´ìƒ",20+GV.getDisplay().getWidth()/5*2, 680, B_24);
+    		canvas.drawText("2000ì–µ ì´ìƒ", 20+GV.getDisplay().getWidth()/5*3, 680, B_24);
+    		canvas.drawText("5000ì–µ ì´ìƒ", 20+GV.getDisplay().getWidth()/5*4, 680, B_24);
 //*/    		
     	}
     }
@@ -439,7 +439,7 @@ private void createContentsContainer(){
 				xpp = factory.newPullParser();
 	
 				String connectUrl = "http://quantec.co.kr/Stock_data_final.html?id=" + dataStock.m_Jcode;
-				// ÇØ´ç Áö¿ªÀÇ urlÀ» ¼³Á¤ÇÑ´Ù.
+				// í•´ë‹¹ ì§€ì—­ì˜ urlì„ ì„¤ì •í•œë‹¤.
 				
 				URL UrlgetStockD = null;
 				UrlgetStockD = new URL(connectUrl);
@@ -526,7 +526,7 @@ private void createContentsContainer(){
 	
 				String connectUrl = "http://quantec.co.kr/Stock_data_annual.html?id=" + dataStock.m_Jcode;
 				
-				// ÇØ´ç Áö¿ªÀÇ urlÀ» ¼³Á¤ÇÑ´Ù.
+				// í•´ë‹¹ ì§€ì—­ì˜ urlì„ ì„¤ì •í•œë‹¤.
 				
 				URL UrlgetStockD = null;
 				UrlgetStockD = new URL(connectUrl);

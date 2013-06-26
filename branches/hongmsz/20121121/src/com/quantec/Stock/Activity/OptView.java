@@ -52,6 +52,7 @@ public class OptView extends Activity{
 	int end_q;						//옵션 메뉴 생성
 	int this_w = 20120702;		//옵션 메뉴 생성
 	int tmp_k;		//옵션 메뉴 생성
+    int tmp_i;
 	
 	int view=0;
 	int lit;
@@ -147,6 +148,7 @@ private void createContentsContainer(){
 //*/                
 //*					
 					if(Math.abs(y2-y1)<40){
+           /*
 	            		if(y1 > menu_pos && y1 < menu_pos+menu_dist && view_page_num+0<GV.getOptD().dNum){
 	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+0]+" 정보 불러오는  중..", true, true);
 	            			new Thread(new Runnable() {
@@ -180,7 +182,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*2 && y1 < menu_pos+menu_dist*3  && view_page_num+2<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+2]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+2]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -196,7 +198,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*3 && y1 < menu_pos+menu_dist*4  && view_page_num+3<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+3]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+3]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -212,7 +214,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*4 && y1 < menu_pos+menu_dist*5  && view_page_num+4<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+4]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+4]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -228,7 +230,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*5 && y1 < menu_pos+menu_dist*6  && view_page_num+5<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+5]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+5]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -244,7 +246,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*6 && y1 < menu_pos+menu_dist*7  && view_page_num+6<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+6]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+6]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -260,7 +262,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*7 && y1 < menu_pos+menu_dist*8  && view_page_num+7<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+7]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+7]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -276,7 +278,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*8 && y1 < menu_pos+menu_dist*9 && view_page_num+8<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+8]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+8]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -292,7 +294,7 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}else if(y1 > menu_pos+menu_dist*9 && y1 < menu_pos+menu_dist*10 && view_page_num+9<GV.getOptD().dNum){
-	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+9]+" 정보 불러오는  중..", true, true);
+	            			dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+9]+getString(R.string.now_loading), true, true);
 	            			new Thread(new Runnable() {
 	            		        
 	            		        public void run() {
@@ -308,6 +310,30 @@ private void createContentsContainer(){
 	            		        }
 	            		    }).start();
 	            		}
+
+           //*/
+
+           //*
+                       for(tmp_i=0 ; tmp_i<10 ; tmp_i++){
+                           if(y1 > menu_pos+menu_dist*tmp_i && y1 < menu_pos+menu_dist*tmp_i+1 && view_page_num+tmp_i<GV.getOptD().dNum){
+                                dialog = ProgressDialog.show(OptView.this, "", GV.getOptD().m_Kname[view_page_num+tmp_i]+getString(R.string.now_loading), true, true);
+                                new Thread(new Runnable() {
+
+                                    public void run() {
+                                        qt_count = 201101;
+                                        tmp = GV.getOptD().m_Jcode[view_page_num+tmp_i];
+                                        tmp_stock = getSValue(tmp); // 20111024 수정
+                                        GV.setStockD(tmp_stock);
+                                        tmp_stock = getSValueA(tmp);
+                                        tmp_stock = getWSValue(tmp);
+                                        GV.setSR(0);
+                                        dialog.dismiss();
+                                        startActivity(Ctest);
+                                    }
+                                }).start();
+                            }
+                       }
+           //*/
 	                }
 	            		
 //*/            		           		

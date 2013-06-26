@@ -1022,7 +1022,7 @@ public class QTS extends Activity {
 				} 
 //*/
 //*				종료 옵션 2 (종료 확인 창)
-				end2.setMessage("My Analyst를\n종료하시겠습니까?");
+				end2.setMessage(getString(R.string.close));
 				end2.setPositiveButton("예", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {
@@ -1068,15 +1068,7 @@ public class QTS extends Activity {
 				getVC();
 				bld = new AlertDialog.Builder(QTS.this);
 				bld.setMessage("My Analyst 버전: "+String.format("%.3f", Float.valueOf(version))+"\n\n" +
-						"본 프로그램은 주식 투자의 참고 자료로 활용될 수 있는 정보를 다양한 차트의 형식으로 표시하고, " +
-						"각각의 차트에 대한 설명을 추가함으로써, 투자하고자 하는 회사의 재무 상태를 파악할 수 있도록 합니다.\n\n" +
-						"[프로그램 사용 방법]\n" +
-						"아래의 [설명 보기] 버튼을 누르면 해당 페이지로 이동합니다.\n\n" +
-						"※ [의견 쓰기] 버튼을 이용하여 의견을 남겨 주시면, " +
-						"검토 후 차기 버전에 반영토록 하겠습니다.\n\n" +
-						"제작사 정보\n\n" +
-						"Quantec. co., ltd\n" +
-						"http://quantec.co.kr");
+                        getString(R.string.exp));
 				bld.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {

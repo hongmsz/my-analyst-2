@@ -520,7 +520,6 @@ public class QTS extends Activity {
 		        }
 		    }).start();
 	        
-			
 		}
 	};
 	

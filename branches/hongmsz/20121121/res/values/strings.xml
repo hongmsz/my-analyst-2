@@ -2,17 +2,21 @@
 <resources>
     <string name="hello">Hello World, QTS!</string>
     <string name="app_name">My Analyst</string>
-    <string name="no_data">해당 데이터가 없습니다. 다시 입력해주십시오.</string>
     <string name="insert_code">종목 명 또는 종목 코드</string>
     <string name="now_loading">불러오는  중..</string>
-    <string name="close">My Analyst를\n
-        종료하시겠습니까?</string>
-    <string name="exp">본 프로그램은 주식 투자의 참고 자료로 활용될 수 있는 정보를 다양한 차트의 형식으로 표시하고,
-        각각의 차트에 대한 설명을 추가함으로써, 투자하고자 하는 회사의 재무 상태를 파악할 수 있도록 합니다.\n\n
-        [프로그램 사용 방법]\n
-        아래의 [설명 보기] 버튼을 누르면 해당 페이지로 이동합니다.\n\n
-        ※ [의견 쓰기] 버튼을 이용하여 의견을 남겨 주시면, 검토 후 차기 버전에 반영토록 하겠습니다.\n\n
-        제작사 정보\n\n
-        Quantec. co., ltd\n
-        http://quantec.co.kr</string>
+    <string name="now_sort">데이터 정렬 중</string>
+    <string name="sort_op1">EPS 증가율 기준</string>
+    <string name="sort_op2">매출액 증가율 기준</string>
+    <string name="sort_op3">영업이익 증가율 기준</string>
+    <string name="sort_op4">PER 기준</string>
+	<string name="sort_op5">PBR 기준</string>
+	<string name="sort_op6">배당수익률 기준</string>
+	<string name="sort_op7">주가상승률 기준</string>
+	<string name="sort_op8">ROE 기준</string>
+    <string name="sort_mass1">전체 보기</string>
+    <string name="sort_mass2">시가 총액 5백억 이상</string>
+    <string name="sort_mass3">시가 총액 1천억 이상</string>
+    <string name="sort_mass4">시가 총액 2천억 이상</string>
+    <string name="sort_mass5">시가 총액 5천억 이상</string>
+    <string name="sort_mass6">시가 총액 1조 이상</string>
 </resources>

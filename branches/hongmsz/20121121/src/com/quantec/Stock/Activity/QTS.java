@@ -71,7 +71,7 @@ public class QTS extends Activity {
 	private boolean isTwoClickBack = false;
 	
 	int count = 0;
-	String str = getString(R.string.no_data);
+	String str = "해당 데이터가 없습니다. 다시 입력해주십시오.";
 	Intent Ctest, CHint;
 	
 	testView test;
@@ -130,6 +130,11 @@ public class QTS extends Activity {
     AlertDialog.Builder bld;
     AlertDialog.Builder end2;
     AlertDialog.Builder update;
+    
+    String tmp_Index, tmp_Dialog;
+    int tmp_dType;
+    long tmp_Opt4;
+    int go_thread=0;
 	
     /** Called when the activity is first created. */
     
@@ -310,6 +315,7 @@ public class QTS extends Activity {
                 }
     			
     			if (event.getAction() == MotionEvent.ACTION_UP) {
+    				go_thread = 0;
 //    				y2=event.getY();
     				if(sub_menu == 0){
     					if(x1 > 0 && x1 < (float)width && y1 > menu_pos && y1 < menu_pos+menu_dist){
@@ -336,299 +342,100 @@ public class QTS extends Activity {
     				}
     				
     				if(sub_menu==2){
+    					tmp_Dialog = getString(R.string.now_sort);
     					if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist && y1 < menu_pos+menu_dist*2){
-    						sub_menu1=0;
-    						if(sub_menu2==0){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n전체 보기", true, true);
-    							new Thread(new Runnable() {
-    								
-    								public void run() {
-    									OptRest = getOptValue("m11", begin_q, end_q, this_w, 10l);
-    									OptRest.dType = 1;
-    									GV.setOptD(OptRest);
-    									dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    								}
-    							}).start();
-    						}else if(sub_menu2==1){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n전체 보기", true, true);
-    							new Thread(new Runnable() {
-    						        
-    						        public void run() {
-    						        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 10l);
-    						        	OptRest.dType = 2;
-    					    			GV.setOptD(OptRest);
-    					    			dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    						        }
-    						    }).start();
-    						}else if(sub_menu2==2){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n전체 보기", true, true);
-    							new Thread(new Runnable() {
-    						        
-    						        public void run() {
-    					    			OptRest = getOptValue("m13", begin_q, end_q, this_w, 10l);
-    						        	OptRest.dType = 3;
-    					    			GV.setOptD(OptRest);
-    					    			dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    						        }
-    						    }).start();
+    						sub_menu1=0;		
+    						tmp_Opt4 = 10l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*2 && y1 < menu_pos+menu_dist*3){
+    						sub_menu1=1;
+    						tmp_Opt4 = 50000000000l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*3 && y1 < menu_pos+menu_dist*4){
+    						sub_menu1=2;
+    						tmp_Opt4 = 100000000000l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*4 && y1 < menu_pos+menu_dist*5){
+    						sub_menu1=3;
+    						tmp_Opt4 = 200000000000l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*5 && y1 < menu_pos+menu_dist*6){
+    						sub_menu1=4;
+    						tmp_Opt4 = 500000000000l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*6 && y1 < menu_pos+menu_dist*7){
+    						sub_menu1=5;
+    						tmp_Opt4 = 1000000000000l;
+    						go_thread = 1;
+    						
+    					}else if(x1>(float)width*4/9){
+    						go_thread = 0;
+    						sub_menu=0;
+    						sub_menu1 = -1;
+    						sub_menu2 = -1;
+    					}
+    					
+    					if(go_thread == 1){
+    						
+    						switch(sub_menu2){
+    						case 0:
+    							tmp_Dialog = tmp_Dialog + "(" +getString(R.string.sort_op1) + ")..";
+    							tmp_Index = "m11";
+    							tmp_dType = 1;
+    							break;
+    						case 1:
+    							tmp_Dialog = tmp_Dialog + "(" + getString(R.string.sort_op2) + ")..";
+    							tmp_Index = "m12";
+    							tmp_dType = 2;
+    							break;
+    						case 2:
+    							tmp_Dialog = tmp_Dialog + "(" + getString(R.string.sort_op3) + ")..";
+    							tmp_Index = "m13";
+    							tmp_dType = 3;
+    							break;
     						}
-                		}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*2 && y1 < menu_pos+menu_dist*3){
-                			sub_menu1=1;
-                			if(sub_menu2==0){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n시가 총액 5백억 이상", true, true);
-    							new Thread(new Runnable() {
-    								
-    								public void run() {
-    									OptRest = getOptValue("m11", begin_q, end_q, this_w, 50000000000l);
-    									OptRest.dType = 1;
-    									GV.setOptD(OptRest);
-    									dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    								}
-    							}).start();
-    						}else if(sub_menu2==1){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n시가 총액 5백억 이상", true, true);
-    							new Thread(new Runnable() {
-    						        
-    						        public void run() {
-    						        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 50000000000l);
-    						        	OptRest.dType = 2;
-    					    			GV.setOptD(OptRest);
-    					    			dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    						        }
-    						    }).start();
-    						}else if(sub_menu2==2){
-    							dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n시가 총액 5백억 이상", true, true);
-    							new Thread(new Runnable() {
-    						        
-    						        public void run() {
-    					    			OptRest = getOptValue("m13", begin_q, end_q, this_w, 50000000000l);
-    						        	OptRest.dType = 3;
-    					    			GV.setOptD(OptRest);
-    					    			dialog.dismiss();
-    									startActivity(CHint);
-    		        					sub_menu=0;
-    		        					sub_menu1 = -1;
-    		        					sub_menu2 = -1;
-    						        }
-    						    }).start();
+    						
+    						switch(sub_menu1){
+	    						case 0:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass1);
+	    							break;
+	    						case 1:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass2);
+	    							break;
+	    						case 2:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass3);
+	    							break;
+	    						case 3:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass4);
+	    							break;
+	    						case 4:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass5);
+	    							break;
+	    						case 5:
+	    							tmp_Dialog = tmp_Dialog + "\n" + getString(R.string.sort_mass6);
+	    							break;
     						}
-                		}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*3 && y1 < menu_pos+menu_dist*4){
-                			sub_menu1=2;
-                			if(sub_menu2==0){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n시가 총액 1천억 이상", true, true);
-                				new Thread(new Runnable() {
-                					
-                					public void run() {
-                						OptRest = getOptValue("m11", begin_q, end_q, this_w, 100000000000l);
-                						OptRest.dType = 1;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                					}
-                				}).start();
-                			}else if(sub_menu2==1){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n시가 총액 1천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                			        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 100000000000l);
-                			        	OptRest.dType = 2;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}else if(sub_menu2==2){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n시가 총액 1천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                						OptRest = getOptValue("m13", begin_q, end_q, this_w, 100000000000l);
-                			        	OptRest.dType = 3;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}
-                		}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*4 && y1 < menu_pos+menu_dist*5){
-                			sub_menu1=3;
-                			if(sub_menu2==0){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n시가 총액 2천억 이상", true, true);
-                				new Thread(new Runnable() {
-                					
-                					public void run() {
-                						OptRest = getOptValue("m11", begin_q, end_q, this_w, 200000000000l);
-                						OptRest.dType = 1;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                					}
-                				}).start();
-                			}else if(sub_menu2==1){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n시가 총액 2천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                			        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 200000000000l);
-                			        	OptRest.dType = 2;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}else if(sub_menu2==2){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n시가 총액 2천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                						OptRest = getOptValue("m13", begin_q, end_q, this_w, 200000000000l);
-                			        	OptRest.dType = 3;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}
-                		}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*5 && y1 < menu_pos+menu_dist*6){
-                			sub_menu1=4;
-                			if(sub_menu2==0){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n시가 총액 5천억 이상", true, true);
-                				new Thread(new Runnable() {
-                					
-                					public void run() {
-                						OptRest = getOptValue("m11", begin_q, end_q, this_w, 500000000000l);
-                						OptRest.dType = 1;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                					}
-                				}).start();
-                			}else if(sub_menu2==1){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n시가 총액 5천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                			        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 500000000000l);
-                			        	OptRest.dType = 2;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}else if(sub_menu2==2){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n시가 총액 5천억 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                						OptRest = getOptValue("m13", begin_q, end_q, this_w, 500000000000l);
-                			        	OptRest.dType = 3;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}
-                		}else if(x1>(float)width*4/9 && y1 > menu_pos+menu_dist*6 && y1 < menu_pos+menu_dist*7){
-                			sub_menu1=5;
-                			if(sub_menu2==0){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(EPS 증가율 기준)..\n시가 총액 1조 이상", true, true);
-                				new Thread(new Runnable() {
-                					
-                					public void run() {
-                						OptRest = getOptValue("m11", begin_q, end_q, this_w, 1000000000000l);
-                						OptRest.dType = 1;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                					}
-                				}).start();
-                			}else if(sub_menu2==1){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(매출액 증가율 기준)..\n시가 총액 1조 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                			        	OptRest = getOptValue("m12", begin_q, end_q, this_w, 1000000000000l);
-                			        	OptRest.dType = 2;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}else if(sub_menu2==2){
-                				dialog = ProgressDialog.show(QTS.this, "", "데이터 정렬 중(영업이익 증가율 기준)..\n시가 총액 1조 이상", true, true);
-                				new Thread(new Runnable() {
-                			        
-                			        public void run() {
-                						OptRest = getOptValue("m13", begin_q, end_q, this_w, 1000000000000l);
-                			        	OptRest.dType = 3;
-                						GV.setOptD(OptRest);
-                						dialog.dismiss();
-                						startActivity(CHint);
-                    					sub_menu=0;
-                    					sub_menu1 = -1;
-                    					sub_menu2 = -1;
-                			        }
-                			    }).start();
-                			}
-                		}else if(x1>(float)width*4/9){
-        					sub_menu=0;
-        					sub_menu1 = -1;
-        					sub_menu2 = -1;
-                		}
+    						
+    						dialog = ProgressDialog.show(QTS.this, "", tmp_Dialog, true, true);
+    						
+	    					new Thread(new Runnable() {	        					
+	        					public void run() {
+	        						OptRest = getOptValue(tmp_Index, begin_oq, end_q, this_w, tmp_Opt4);
+	        						OptRest.dType = tmp_dType;
+	        						GV.setOptD(OptRest);
+	        						dialog.dismiss();
+	        						startActivity(CHint);
+	        						sub_menu=0;
+	        						sub_menu1 = -1;
+	        						sub_menu2 = -1;
+	        					}
+	        				}).start();
+    					}
     				}
     				
     				setAd.invalidate();
@@ -1022,7 +829,7 @@ public class QTS extends Activity {
 				} 
 //*/
 //*				종료 옵션 2 (종료 확인 창)
-				end2.setMessage(getString(R.string.close));
+				end2.setMessage("My Analyst를\n" + "종료하시겠습니까?");
 				end2.setPositiveButton("예", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {
@@ -1068,7 +875,14 @@ public class QTS extends Activity {
 				getVC();
 				bld = new AlertDialog.Builder(QTS.this);
 				bld.setMessage("My Analyst 버전: "+String.format("%.3f", Float.valueOf(version))+"\n\n" +
-                        getString(R.string.exp));
+				"본 프로그램은 주식 투자의 참고 자료로 활용될 수 있는 정보를 다양한 차트의 형식으로 표시하고," +
+				"각각의 차트에 대한 설명을 추가함으로써, 투자하고자 하는 회사의 재무 상태를 파악할 수 있도록 합니다.\n\n" +
+				"[프로그램 사용 방법]\n" +
+				"아래의 [설명 보기] 버튼을 누르면 해당 페이지로 이동합니다.\n\n" +
+				"※ [의견 쓰기] 버튼을 이용하여 의견을 남겨 주시면, 검토 후 차기 버전에 반영토록 하겠습니다.\n\n" +
+				"제작사 정보\n\n" +
+				"Quantec. co., ltd\n" +
+				"http://quantec.co.kr");
 				bld.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
 					
 					public void onClick(DialogInterface dialog, int which) {
@@ -1294,15 +1108,15 @@ public class QTS extends Activity {
     	    		canvas.drawBitmap(Icon_t3, 0, menu_pos+menu_dist*(mp+1), pnt2);
     	    		canvas.drawBitmap(Icon_soff, (float)width*4/9-Icon_soff.getWidth()-5f, menu_pos+menu_dist*(mp+1), pnt);
     	    	}
-				canvas.drawText("EPS 증가율 기준", 	15f, menu_pos+menu_text_dist+menu_dist*3/2, W_30);
-				canvas.drawText("매출액 기준", 		15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
-				canvas.drawText("영업이익 기준", 		15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
+				canvas.drawText(getString(R.string.sort_op1), 	15f, menu_pos+menu_text_dist+menu_dist*3/2, W_30);
+				canvas.drawText(getString(R.string.sort_op2),	15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
+				canvas.drawText(getString(R.string.sort_op3),	15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
 				////////////////////////////////////////////// 2013.02.20 메뉴 추가
-				canvas.drawText("PER 기준", 		15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
-				canvas.drawText("PBR 기준", 		15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
-				canvas.drawText("배당수익률 기준", 		15f, menu_pos+menu_text_dist+menu_dist*13/2, W_30);
-				canvas.drawText("주가상승률 기준", 		15f, menu_pos+menu_text_dist+menu_dist*15/2, W_30);
-				canvas.drawText("ROE 기준", 		15f, menu_pos+menu_text_dist+menu_dist*17/2, W_30);
+				canvas.drawText(getString(R.string.sort_op4),	15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
+				canvas.drawText(getString(R.string.sort_op5),	15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
+				canvas.drawText(getString(R.string.sort_op6),	15f, menu_pos+menu_text_dist+menu_dist*13/2, W_30);
+				canvas.drawText(getString(R.string.sort_op7),	15f, menu_pos+menu_text_dist+menu_dist*15/2, W_30);
+				canvas.drawText(getString(R.string.sort_op8),	15f, menu_pos+menu_text_dist+menu_dist*17/2, W_30);
     	    }
     	    if(sub_menu == 2){
     	    	switch(sub_menu2){
@@ -1351,12 +1165,12 @@ public class QTS extends Activity {
 //    	    		canvas.drawBitmap(Icon_t4, (float)width*4/9, menu_pos+menu_dist*(mp2+1), pnt2);
     	    		canvas.drawBitmap(Icon_soff, (float)width-Icon_soff.getWidth()-5f, menu_pos+menu_dist*(mp2+1), pnt);
     	    	}
-				canvas.drawText("전체 보기", 				(float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*3/2, W_30);
-				canvas.drawText("시가총액 5백억 이상", (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
-				canvas.drawText("시가총액 1천억 이상", (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
-				canvas.drawText("시가총액 2천억 이상", (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
-				canvas.drawText("시가총액 5천억 이상", (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
-				canvas.drawText("시가총액 1조 이상", (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*13/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass1), 	(float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*3/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass2), (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*5/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass3), (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*7/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass4), (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*9/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass5), (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*11/2, W_30);
+				canvas.drawText(getString(R.string.sort_mass6), (float)width*4/9+Pnter.getWidth()+15f, menu_pos+menu_text_dist+menu_dist*13/2, W_30);
 				
 				switch(sub_menu1){
 	    	    	case 0:

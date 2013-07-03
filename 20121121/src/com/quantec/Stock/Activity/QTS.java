@@ -158,7 +158,8 @@ public class QTS extends Activity {
  		menu_text_dist = GV.getDisplay().getHeight()*0.01f;
         
 		Ctest = new Intent(this, ContentsActivity.class);
-        CHint = new Intent(this, OptView.class);
+		CHint = new Intent(this, OptView.class);
+//		CHint = new Intent(this, Hint.class);
         
         Cmenu1 = new Intent(this, Menu_One.class);
 		Cmenu2 = new Intent(this, Menu_Two.class);

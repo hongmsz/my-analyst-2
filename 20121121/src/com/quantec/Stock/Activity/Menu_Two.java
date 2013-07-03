@@ -232,10 +232,20 @@ public class Menu_Two extends Activity{
 //*///주가 변동 추세
 						else if( y1 > height*0.24f && y1 < height*0.327f && x1 > width*0.075f && x1 < width*0.231f){ //가로 차트설명 버튼 위치
 							view_val = -1;
-							if(GV.getSRV() == 0) bld.setMessage(exp1);
-							else if(GV.getSRV() == 1) bld.setMessage(exp2);
-							else if(GV.getSRV() == 2) bld.setMessage(exp3);
-							else if(GV.getSRV() == 3) bld.setMessage(exp4);
+							switch(GV.getSRV()){
+							case 0:
+								bld.setMessage(exp1); 
+								break;
+							case 1:
+								bld.setMessage(exp2);
+								break;
+							case 2:
+								bld.setMessage(exp3);
+								break;
+							case 3:
+								bld.setMessage(exp4);
+								break;
+							}
 							bld.setPositiveButton("닫기", new DialogInterface.OnClickListener() {
 								
 								public void onClick(DialogInterface dialog, int which) {
@@ -533,51 +543,51 @@ public class Menu_Two extends Activity{
 					}
 				}
     			
-    			if(opt_dur == 0){
+    			switch(opt_dur){
+    			case 0:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map011, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 1){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+					}
+	    			break;
+    			case 1:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map010, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 2){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+					}
+	    			break;
+    			case 2:
 	    			canvas.drawBitmap(map009, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+					}
+	    			break;
     			}
     			
-				if(GV.getSRV() == 0){
+    			switch(GV.getSRV()){
+    			case 0:
 ////////////////////////////////////////////view 1 begin		
 					
 					canvas.drawText("부채비율 & 유동비율", width*0.2675f, title_position, W_24);
 					//canvas.drawText(duration + " 분기  매출 지수  - 순이익 지수 ", display2.getWidth()/2 - 120, display2.getHeight()-250, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
 					
 					for(int dx = 0; dx< duration; dx++){
 						if(GV.getStockD().m_m22[dx] == 0)
@@ -756,37 +766,12 @@ public class Menu_Two extends Activity{
 							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin2[duration-1-view_val])), posX[view_val]-ci02.getWidth()+5, posY[view_val]+7, B_18);
 						}
 					}
-				}else if(GV.getSRV() == 1){
+					break;
+    			case 1:
 ////////////////////////////////////////////view 2 begin
 			    	
 					canvas.drawText("차입금 & 차입금 비중", width*0.2675f, title_position, W_24);
 
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
-					
 					for(int dx = 0; dx< duration; dx++){
 						tmp_sort[dx] = tmp_origin[dx] = GV.getStockD().m_m24[dx];
 						
@@ -969,38 +954,12 @@ public class Menu_Two extends Activity{
 							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[duration-1-view_val]*100.0f)), posX[view_val]-ci02.getWidth()+5, posY[view_val]+7, B_18);
 						}
 					}
-					
-				}else if(GV.getSRV() == 2){
+					break;
+    			case 2:
 //////////////////////////////////////////////view 3 begin
 			    	
 					canvas.drawText("이자보상배율", width*0.2675f, title_position, W_24);
 
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
-					
 					for(int dx = 0; dx< duration; dx++){
 						if(GV.getStockD().m_m27[dx] == 0)
 							f_sort[dx] = f_origin[dx] = 0;
@@ -1106,37 +1065,11 @@ public class Menu_Two extends Activity{
 						canvas.drawBitmap(ci01, posX[view_val]-ci01.getWidth(), posY[view_val]-ci01.getHeight(), pnt);
 						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[duration-1-view_val])), posX[view_val]-ci01.getWidth()+5, posY[view_val]-c01.getHeight()/2, B_18);
 					}
-					
-				}else if(GV.getSRV() == 3){
+					break;
+    			case 3:
 //////////////////////////////////////////////view 4 begin
 					
 					canvas.drawText("자기자본비율", width*0.2675f, title_position, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
 					
 					for(int dx = 0; dx< duration; dx++){
 						f_sort[dx]=f_origin[dx] = GV.getStockD().m_m28[dx];
@@ -1240,7 +1173,8 @@ public class Menu_Two extends Activity{
 						canvas.drawBitmap(ci01, posX[view_val]-ci01.getWidth(), posY[view_val]-ci01.getHeight(), pnt);
 						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[duration-1-view_val])), posX[view_val]-ci01.getWidth()+5, posY[view_val]-c01.getHeight()/2, B_18);
 					}
-				}
+					break;
+    			}
 				canvas.drawBitmap(map006, width*0.075f, height*0.24f, pnt);
 //				canvas.drawText("차트 설명 보기", width - 200, height-20, pnt2);
 			}
@@ -1270,24 +1204,7 @@ public class Menu_Two extends Activity{
 //    			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
     		}
     	}
-         
-    	public void animate(final testView tmp) {
-    		tmp.thr = 1;
-     		
-    		new Thread(new Runnable() {
-    			
-    			public void run() {
-    				while(tmp.thr == 1){ 
-    					tmp.postInvalidate();
-    					try {
-    						Thread.sleep(50);
-    					} catch (InterruptedException e) {
-    						e.printStackTrace();
-    					}
-    				}
-    			}
-    		}).start();
-    	}
+
     }
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -523,20 +523,47 @@ public class Menu_Four extends Activity {
 					}
 				}
     			
-    			if(opt_dur == 0){
+    			switch(opt_dur){
+    			case 0:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map011, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 1){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+					}
+	    			break;
+    			case 1:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map010, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 2){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+					}
+	    			break;
+    			case 2:
 	    			canvas.drawBitmap(map009, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+					}
+	    			break;
     			}
-				if(GV.getSRV() == 0){
+    			
+    			switch(GV.getSRV()){
+    			case 0:
 ////////////////////////////////////////////view 1 begin	
 					float[] f_sort = new float[duration];
 			    	float[] f_origin = new float[duration];
@@ -545,42 +572,6 @@ public class Menu_Four extends Activity {
 			    	float[] m41_tmp = new float[duration];
 			    	
 					canvas.drawText("ROE & PBR", width*0.2675f, title_position, W_24);
-					
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							
-							if(GV.getStockD().m_quarter[0] >= 201104){
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}
-							else{
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-							}
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
 					
 					for(int dx = 0; dx< duration*12; dx++){
 						if(GV.getStockD().m_m26[dx/12] == 10)
@@ -756,60 +747,25 @@ public class Menu_Four extends Activity {
 						canvas.drawBitmap(ci01, tmp_posX[view_val/4]-ci01.getWidth(), posY[view_val/4]-ci01.getHeight(), pnt);
 						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]-ci01.getWidth()+5, posY[view_val/4]-c01.getHeight()/2, B_18);
 					}
-				}else if(GV.getSRV() == 1){
+					break;
+    			case 1:
 ////////////////////////////////////////////view 2 begin
-					float[] f_sort = new float[duration];
-			    	float[] f_origin = new float[duration];
+					float[] f_sort1 = new float[duration];
+			    	float[] f_origin1 = new float[duration];
 			    	float[] m43_tmp = new float[duration];
 			    	
 					canvas.drawText("총자산 증가율", width*0.2675f, title_position, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							
-							if(GV.getStockD().m_quarter[0] >= 201104){
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}
-							else{
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-							}
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
 					
-					int tmp_count = 0;
+					int tmp_count1 = 0;
 					for(int dx = 0; dx< duration; dx++){
 						if(GV.getStockD().m_quarter[dx]%4 == 0){
-							m43_tmp[tmp_count] = GV.getStockD().m_m43[dx];
-							tmp_count++;
+							m43_tmp[tmp_count1] = GV.getStockD().m_m43[dx];
+							tmp_count1++;
 						}
 					}
 					
-					for(int dx = 0; dx< tmp_count; dx++){
-						f_sort[dx] = f_origin[dx] = (float)m43_tmp[dx];
+					for(int dx = 0; dx< tmp_count1; dx++){
+						f_sort1[dx] = f_origin1[dx] = (float)m43_tmp[dx];
 					}
 					
 					canvas.drawLine(b_x, c_y , b_x+l_x, c_y , pnt3);
@@ -863,27 +819,27 @@ public class Menu_Four extends Activity {
 					// 총자산 증가율
 					//* 
 					
-					sorter.sort(f_sort, tmp_count);
+					sorter.sort(f_sort1, tmp_count1);
 					
-					f_max = f_sort[tmp_count-1];
-					f_min = f_sort[0];
+					f_max = f_sort1[tmp_count1-1];
+					f_min = f_sort1[0];
 					
-					for(int dy = 0; dy<tmp_count; dy++){
+					for(int dy = 0; dy<tmp_count1; dy++){
 						if(f_max - f_min == 0)
 							posY[dy] = height*(float)0.75;
 						else
-							posY[dy] = height*(float)0.75 -(float)(f_origin[tmp_count - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
+							posY[dy] = height*(float)0.75 -(float)(f_origin1[tmp_count1 - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
 					}
 //*					
-					int tmp_count_posX=0;
+					int tmp_count_posX1=0;
 					for(int dx = 0; dx< duration; dx++)
 						if(GV.getStockD().m_quarter[duration-dx-1]%4 == 0){
-							tmp_posX[tmp_count_posX] = posX[dx];
-							tmp_count_posX++;
+							tmp_posX[tmp_count_posX1] = posX[dx];
+							tmp_count_posX1++;
 						}
 //*/					
 					//*/
-					for(int dr = 0; dr < tmp_count-1; dr++)
+					for(int dr = 0; dr < tmp_count1-1; dr++)
 						if(tmp_posX[dr] > width*0.067f)
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt3);
 										
@@ -908,7 +864,7 @@ public class Menu_Four extends Activity {
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 					
-						for(int dr = 0; dr < tmp_count; dr++)
+						for(int dr = 0; dr < tmp_count1; dr++)
 							if(tmp_posX[dr] > width*0.067f){
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 4, pnt3);
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 3, W_24);
@@ -917,79 +873,43 @@ public class Menu_Four extends Activity {
 
 					if(view_val >= 0 && view_val < 15){
 						canvas.drawBitmap(c01, tmp_posX[view_val/4], posY[view_val/4]-c01.getHeight(), pnt);
-						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]+7*c_height, posY[view_val/4]-c01.getHeight()/2, B_18);
+						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin1[tmp_count1-1-view_val/4])), tmp_posX[view_val/4]+7*c_height, posY[view_val/4]-c01.getHeight()/2, B_18);
 					}else if(view_val>=15 && view_val < duration){
 						canvas.drawBitmap(ci01, tmp_posX[view_val/4]-ci01.getWidth(), posY[view_val/4]-ci01.getHeight(), pnt);
-						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]-ci01.getWidth()+10, posY[view_val/4]-c01.getHeight()/2, B_18);
+						canvas.drawText(String.format("%.2f", Float.valueOf(f_origin1[tmp_count1-1-view_val/4])), tmp_posX[view_val/4]-ci01.getWidth()+10, posY[view_val/4]-c01.getHeight()/2, B_18);
 					}
-				}else if(GV.getSRV() == 2){
+					break;
+    			case 2:
 ////////////////////////////////////////////view 3 begin
-					float[] f_sort = new float[duration];
-			    	float[] f_origin = new float[duration];
-			    	float[] f_sort2 = new float[duration];
-			    	float[] f_origin2 = new float[duration];
+					float[] f_sort11 = new float[duration];
+			    	float[] f_origin11 = new float[duration];
+			    	float[] f_sort21 = new float[duration];
+			    	float[] f_origin21 = new float[duration];
 			    	long[] m26_tmp = new long[duration];
 			    	long[] m14_tmp = new long[duration];
-			    	float[] m41_tmp = new float[duration];
+			    	float[] m41_tmp1 = new float[duration];
 			    	
 					canvas.drawText("ROE & ROA", width*0.2675f, title_position, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							
-							if(GV.getStockD().m_quarter[0] >= 201104){
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}
-							else{
-								if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-									tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-									tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-								}else
-									tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+48];
-							}
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
-					
 //*					
-					int tmp_count = 0;
+					int tmp_count11 = 0;
 					for(int dx = 0; dx< duration+4; dx++){
 						if(GV.getStockD().m_quarter[dx]%4 == 0){
-							m26_tmp[tmp_count] = GV.getStockD().m_m26[dx];
-							m14_tmp[tmp_count] = GV.getStockD().m_m14[dx];
-							m41_tmp[tmp_count] = GV.getStockD().m_m41[dx];
-							tmp_count++;
+							m26_tmp[tmp_count11] = GV.getStockD().m_m26[dx];
+							m14_tmp[tmp_count11] = GV.getStockD().m_m14[dx];
+							m41_tmp1[tmp_count11] = GV.getStockD().m_m41[dx];
+							tmp_count11++;
 						}
 					}
-					tmp_count--;
+					tmp_count11--;
 //*/				
 					
-					for(int dx = 0; dx< tmp_count; dx++){
-						f_sort[dx] = f_origin[dx] = (float)m41_tmp[dx];
+					for(int dx = 0; dx< tmp_count11; dx++){
+						f_sort11[dx] = f_origin11[dx] = (float)m41_tmp1[dx];
 						
 						if((m26_tmp[dx+1]-m26_tmp[dx]) == 0)
-							f_sort2[dx] = f_origin2[dx] = 0;
+							f_sort21[dx] = f_origin21[dx] = 0;
 						else
-							f_sort2[dx] = f_origin2[dx] = (float)(m14_tmp[dx]*2)/(float)(m26_tmp[dx+1]+m26_tmp[dx]);
+							f_sort21[dx] = f_origin21[dx] = (float)(m14_tmp[dx]*2)/(float)(m26_tmp[dx+1]+m26_tmp[dx]);
 					}
 					canvas.drawLine(b_x, c_y - t_i, b_x+l_x, c_y - t_i, pnt4);
 					canvas.drawCircle(c_x, c_y - t_i, r_c, pnt4);
@@ -1047,27 +967,27 @@ public class Menu_Four extends Activity {
 //*/// 주가 변동 추세
 					// ROE
 					//*   		 
-					sorter.sort(f_sort, tmp_count);
+					sorter.sort(f_sort11, tmp_count11);
 					
-					f_max = f_sort[tmp_count-1];
-					f_min = f_sort[0];
+					f_max = f_sort11[tmp_count11-1];
+					f_min = f_sort11[0];
 					
-					for(int dy = 0; dy<tmp_count; dy++){
+					for(int dy = 0; dy<tmp_count11; dy++){
 						if(f_max - f_min == 0)
 							posY_t1[dy] = posY[dy] = height*(float)0.75;
 						else
-							posY_t1[dy] = posY[dy] = height*(float)0.75 -(float)(f_origin[tmp_count - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
+							posY_t1[dy] = posY[dy] = height*(float)0.75 -(float)(f_origin11[tmp_count11 - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
 					}
 //*					
-					int tmp_count_posX=0;
+					int tmp_count_posX11=0;
 					for(int dx = 0; dx< duration; dx++)
 						if(GV.getStockD().m_quarter[duration-dx-1]%4 == 0){
-							tmp_posX[tmp_count_posX] = posX[dx];
-							tmp_count_posX++;
+							tmp_posX[tmp_count_posX11] = posX[dx];
+							tmp_count_posX11++;
 						}
 //*/					
 //*
-					for(int dr = 0; dr < tmp_count-1; dr++)
+					for(int dr = 0; dr < tmp_count11-1; dr++)
 						if(tmp_posX[dr] > width*0.067f)
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt4);
 										
@@ -1092,7 +1012,7 @@ public class Menu_Four extends Activity {
 						canvas.drawText(v1, 5, height*0.66f, W_18);
 						canvas.drawText(v_min1, 5, height*0.77f, W_18);
 					
-						for(int dr = 0; dr < tmp_count; dr++)
+						for(int dr = 0; dr < tmp_count11; dr++)
 							if(tmp_posX[dr] > width*0.067f){
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 4, pnt4);
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 3, W_24);
@@ -1100,19 +1020,19 @@ public class Menu_Four extends Activity {
 					}
 					
 					// ROA
-					sorter.sort(f_sort2, tmp_count);
+					sorter.sort(f_sort21, tmp_count11);
 					
-					f_max = f_sort2[tmp_count-1];
-					f_min = f_sort2[0];
+					f_max = f_sort21[tmp_count11-1];
+					f_min = f_sort21[0];
 					
-					for(int dy = 0; dy<tmp_count; dy++){
+					for(int dy = 0; dy<tmp_count11; dy++){
 						if(f_max - f_min == 0)
 							posY[dy] = height*(float)0.75;
 						else
-							posY[dy] = height*(float)0.75 -(float)(f_origin2[tmp_count - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
+							posY[dy] = height*(float)0.75 -(float)(f_origin21[tmp_count11 - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
 					}
 
-					for(int dr = 0; dr < tmp_count-1; dr++)
+					for(int dr = 0; dr < tmp_count11-1; dr++)
 						if(tmp_posX[dr] > width*0.067f)
 							canvas.drawLine(tmp_posX[dr], posY[dr], tmp_posX[dr+1], posY[dr+1], pnt3);
 										
@@ -1137,7 +1057,7 @@ public class Menu_Four extends Activity {
 						canvas.drawText(v1, width-2- v_max1.length()*11*c_height, height*0.66f, W_18);
 						canvas.drawText(v_min1, width-2 - v_max1.length()*11*c_height, height*0.77f, W_18);
 					
-						for(int dr = 0; dr < tmp_count; dr++)
+						for(int dr = 0; dr < tmp_count11; dr++)
 							if(tmp_posX[dr] > width*0.067f){
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 4, pnt3);
 							canvas.drawCircle(tmp_posX[dr], posY[dr], 3, W_24);
@@ -1147,33 +1067,34 @@ public class Menu_Four extends Activity {
 					if(view_val >= 0 && view_val < 15){
 						if(posY[view_val/4]<posY_t1[view_val/4]){
 							canvas.drawBitmap(c01, tmp_posX[view_val/4], posY[view_val/4]-c01.getHeight(), pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin2[tmp_count-1-view_val/4]*100)), tmp_posX[view_val/4]+7*c_height, posY[view_val/4]-c01.getHeight()/2, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin21[tmp_count11-1-view_val/4]*100)), tmp_posX[view_val/4]+7*c_height, posY[view_val/4]-c01.getHeight()/2, B_18);
 
 							canvas.drawBitmap(c02, tmp_posX[view_val/4], posY_t1[view_val/4]-c02.getHeight()/2, pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]+17*c_height, posY_t1[view_val/4]+7, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin11[tmp_count11-1-view_val/4])), tmp_posX[view_val/4]+17*c_height, posY_t1[view_val/4]+7, B_18);
 						}else{
 							canvas.drawBitmap(c01, tmp_posX[view_val/4], posY_t1[view_val/4]-c01.getHeight(), pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]+7*c_height, posY_t1[view_val/4]-c01.getHeight()/2, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin11[tmp_count11-1-view_val/4])), tmp_posX[view_val/4]+7*c_height, posY_t1[view_val/4]-c01.getHeight()/2, B_18);
 
 							canvas.drawBitmap(c02, tmp_posX[view_val/4], posY[view_val/4]-c02.getHeight()/2, pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin2[tmp_count-1-view_val/4]*100)), tmp_posX[view_val/4]+17*c_height, posY[view_val/4]+7, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin21[tmp_count11-1-view_val/4]*100)), tmp_posX[view_val/4]+17*c_height, posY[view_val/4]+7, B_18);
 						}
 					}else if(view_val>=15 && view_val < duration){
 						if(posY[view_val/4]<posY_t1[view_val/4]){
 							canvas.drawBitmap(ci01, tmp_posX[view_val/4]-ci01.getWidth(), posY[view_val/4]-c01.getHeight(), pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin2[tmp_count-1-view_val/4]*100)), tmp_posX[view_val/4]-ci01.getWidth()+5, posY[view_val/4]-ci01.getHeight()/2, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin21[tmp_count11-1-view_val/4]*100)), tmp_posX[view_val/4]-ci01.getWidth()+5, posY[view_val/4]-ci01.getHeight()/2, B_18);
 
 							canvas.drawBitmap(ci02, tmp_posX[view_val/4]-ci02.getWidth(), posY_t1[view_val/4]-ci02.getHeight()/2, pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]-ci02.getWidth()+5, posY_t1[view_val/4]+7, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin11[tmp_count11-1-view_val/4])), tmp_posX[view_val/4]-ci02.getWidth()+5, posY_t1[view_val/4]+7, B_18);
 						}else{
 							canvas.drawBitmap(ci01, tmp_posX[view_val/4]-ci01.getWidth(), posY_t1[view_val/4]-ci01.getHeight(), pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin[tmp_count-1-view_val/4])), tmp_posX[view_val/4]-ci01.getWidth()+5, posY_t1[view_val/4]-ci01.getHeight()/2, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin11[tmp_count11-1-view_val/4])), tmp_posX[view_val/4]-ci01.getWidth()+5, posY_t1[view_val/4]-ci01.getHeight()/2, B_18);
 
 							canvas.drawBitmap(ci02, tmp_posX[view_val/4]-ci02.getWidth(), posY[view_val/4]-ci02.getHeight()/2, pnt);
-							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin2[tmp_count-1-view_val/4]*100)), tmp_posX[view_val/4]-ci02.getWidth()+5, posY[view_val/4]+7, B_18);
+							canvas.drawText(String.format("%.2f", Float.valueOf(f_origin21[tmp_count11-1-view_val/4]*100)), tmp_posX[view_val/4]-ci02.getWidth()+5, posY[view_val/4]+7, B_18);
 						}
 					}
-				}
+					break;
+    			}
 				canvas.drawBitmap(map006, width*0.075f, height*0.24f, pnt);
 //				canvas.drawText("차트 설명 보기", width - 200, height-20, pnt2);
 			}
@@ -1204,24 +1125,7 @@ public class Menu_Four extends Activity {
 //    			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
     		}
     	}
-         
-    	public void animate(final testView tmp) {
-    		tmp.thr = 1;
-     		
-    		new Thread(new Runnable() {
-    			
-    			public void run() {
-    				while(tmp.thr == 1){ 
-    					tmp.postInvalidate();
-    					try {
-    						Thread.sleep(50);
-    					} catch (InterruptedException e) {
-    						e.printStackTrace();
-    					}
-    				}
-    			}
-    		}).start();
-    	}
+        
     }
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

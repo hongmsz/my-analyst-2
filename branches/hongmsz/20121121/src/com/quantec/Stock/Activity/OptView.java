@@ -13,7 +13,6 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.quantec.Stock.MyApp;
 import com.quantec.Stock.R;
-import com.quantec.Stock.Activity.Hint.testView;
 
 import android.app.Activity;
 import android.app.Dialog;

@@ -477,52 +477,53 @@ public class Menu_Six extends Activity {
 					}
 				}
     			
-    			if(opt_dur == 0){
+    			switch(opt_dur){
+    			case 0:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map011, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 1){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
+					}
+	    			break;
+    			case 1:
 	    			canvas.drawBitmap(map004, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map010, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
-    			}else if(opt_dur == 2){
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
+					}
+	    			break;
+    			case 2:
 	    			canvas.drawBitmap(map009, GV.getDisplay().getWidth()-width*0.2375f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map007, GV.getDisplay().getWidth()-width*0.18125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
 	    			canvas.drawBitmap(map008, GV.getDisplay().getWidth()-width*0.125f, GV.getDisplay().getHeight()-height*0.1875f, pnt);
+	    			for(int dx = 0; dx< (duration+1)*12; dx++){
+						if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
+							tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
+							tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+						}else
+							tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
+					}
+	    			break;
     			}
-				if(GV.getSRV() == 0){
+    			
+    			switch(GV.getSRV()){    			
+    			case 0:
 ////////////////////////////////////////////view 1 begin
 					float[] f_sort = new float[duration*12];
 			    	float[] f_origin = new float[duration*12];
 			    	
 					canvas.drawText("주가순자산비율(PBR)", width*0.2675f, title_position, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
-					
+		
 					for(int dx = 0; dx< duration*12; dx++){
 						if(GV.getStockD().m_m26[dx/12] == 10)
 							f_sort[dx] = f_origin[dx] = 0;
@@ -653,45 +654,18 @@ public class Menu_Six extends Activity {
 //							canvas.drawCircle(posX[dr], posY[dr], 3, W_24);
 //						}
 					}
-					
-
-				}else if(GV.getSRV() == 1){
+					break;
+    			case 1:
 //////////////////////////////////////////////view 2 begin
-					float[] f_sort = new float[duration];
-			    	float[] f_origin = new float[duration];
+					float[] f_sort1 = new float[duration];
+			    	float[] f_origin1 = new float[duration];
 					canvas.drawText("주당순자산(BPS)", width*0.2675f, title_position, W_24);
-
-					if(opt_dur == 0){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx];
-						}
-					}else if(opt_dur == 1){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+240] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+240];
-						}
-					}else if(opt_dur == 2){
-						for(int dx = 0; dx< (duration+1)*12; dx++){
-							if(GV.getStockD().v_stock[dx+336] == -1 && dx > 0){
-								tmp_sort_sv[dx] = tmp_sort_sv[dx-1]; 
-								tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-							}else
-								tmp_sort_sv[dx] = tmp_origin_sv[dx] = GV.getStockD().v_stock[dx+336];
-						}
-					}
 					
 					for(int dx = 0; dx< duration; dx++){
 						if(GV.getStockD().m_m35[dx] == 0)
-							f_sort[dx] = f_origin[dx] = 0;
+							f_sort1[dx] = f_origin1[dx] = 0;
 						else
-							f_sort[dx] = f_origin[dx] = (float)GV.getStockD().m_m26[dx]/(float)GV.getStockD().m_m35[dx];
+							f_sort1[dx] = f_origin1[dx] = (float)GV.getStockD().m_m26[dx]/(float)GV.getStockD().m_m35[dx];
 					}
 					
 					pnt.setStrokeWidth(3);
@@ -771,13 +745,13 @@ public class Menu_Six extends Activity {
 					}else
 						canvas.drawText("주가", c_x + 10, c_y - t_i + 10, B_24);
 					// 주당순자산					
-					sorter.sort(f_sort, duration);
+					sorter.sort(f_sort1, duration);
 					
-					f_max = f_sort[duration-1];
-					f_min = f_sort[0];
+					f_max = f_sort1[duration-1];
+					f_min = f_sort1[0];
 					
 					for(int dy = 0; dy<duration ; dy++){
-						posY[dy] = height*(float)0.75 -(float)(f_origin[duration - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
+						posY[dy] = height*(float)0.75 -(float)(f_origin1[duration - dy -1]-f_min)/(float)(f_max-f_min)*height*(float)0.5;
 					}
 					//*/
 					for(int dr = 0; dr < duration-1; dr++)
@@ -821,12 +795,14 @@ public class Menu_Six extends Activity {
 
 					if(view_val >= 0 && view_val < 15){
 						canvas.drawBitmap(c01, posX[view_val], posY[view_val]-c01.getHeight(), pnt);
-						canvas.drawText(String.format("%.0f", Float.valueOf(f_origin[duration-1-view_val]/tmp_dig)), posX[view_val]+7*c_height, posY[view_val]-c01.getHeight()/2, B_18);
+						canvas.drawText(String.format("%.0f", Float.valueOf(f_origin1[duration-1-view_val]/tmp_dig)), posX[view_val]+7*c_height, posY[view_val]-c01.getHeight()/2, B_18);
 					}else if(view_val>=15 && view_val < duration){
 						canvas.drawBitmap(ci01, posX[view_val]-ci01.getWidth(), posY[view_val]-ci01.getHeight(), pnt);
-						canvas.drawText(String.format("%.0f", Float.valueOf(f_origin[duration-1-view_val]/tmp_dig)), posX[view_val]-ci01.getWidth()+5, posY[view_val]-c01.getHeight()/2, B_18);
+						canvas.drawText(String.format("%.0f", Float.valueOf(f_origin1[duration-1-view_val]/tmp_dig)), posX[view_val]-ci01.getWidth()+5, posY[view_val]-c01.getHeight()/2, B_18);
 					}
-				}
+					break;
+    			}
+    			
 				canvas.drawBitmap(map006, width*0.075f, height*0.24f, pnt);
 //				canvas.drawText("차트 설명 보기", width - 200, height-20, pnt2);
 			}
@@ -856,24 +832,7 @@ public class Menu_Six extends Activity {
 //    			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
     		}
     	}
-         
-    	public void animate(final testView tmp) {
-    		tmp.thr = 1;
-     		
-    		new Thread(new Runnable() {
-    			
-    			public void run() {
-    				while(tmp.thr == 1){ 
-    					tmp.postInvalidate();
-    					try {
-    						Thread.sleep(50);
-    					} catch (InterruptedException e) {
-    						e.printStackTrace();
-    					}
-    				}
-    			}
-    		}).start();
-    	}
+        
     }
 	
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

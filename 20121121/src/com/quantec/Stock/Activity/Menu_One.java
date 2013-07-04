@@ -46,10 +46,7 @@ public class Menu_One extends Activity {
 	
 	Intent Cmenu1, Cmenu2, Cmenu3, Cmenu4, Cmenu5, Cmenu6;
     
-//    testView test;
 	extern_view test;
-    
-//    int sub_menu = 0;
     
     //////////////////////////////////////////////
     
@@ -64,7 +61,7 @@ public class Menu_One extends Activity {
     
     int fix_dis = 0;
     AlertDialog.Builder bld;
-    String mTitle = "수익성";
+//    String mTitle = "수익성";
     
     String exp1 = "[분기 EPS]\n" +
     		"* 1주당 이익을 얼마 창출하였느냐를 나타내는 지표\n\n" +
@@ -112,7 +109,7 @@ public class Menu_One extends Activity {
 		test = new extern_view(this);
 		
 		test.mTitle = "수익성";
-		
+				
 		test.width = GV.getDisplay().getWidth();
 		test.height= GV.getDisplay().getHeight();
 		

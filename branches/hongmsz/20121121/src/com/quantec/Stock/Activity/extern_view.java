@@ -22,7 +22,7 @@ public class extern_view extends View {
 	MyApp GV;
 	
 	int thr = 0;
-	
+		
 ///////////////////////////////////////////////////////////
 	String mTitle, sub_title;
 	
@@ -115,11 +115,8 @@ public class extern_view extends View {
 	Bitmap map009 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_03);
 	Bitmap map010 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_05);
 	Bitmap map011 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.on_10);
+	Bitmap map012, map013, map014;
 	
-	Bitmap map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m1);
-	Bitmap map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm1);
-	Bitmap map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm1);
-
 	Bitmap map015 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.search_ss); // 주가 변동 추세
 	
 
@@ -130,6 +127,8 @@ public class extern_view extends View {
 	Bitmap ci01 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_up);
 	Bitmap ci02 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_mid);
 	Bitmap ci03 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.cloud_i_down);
+	
+	Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p);
 
 	public extern_view(Context context)
 	{
@@ -198,7 +197,7 @@ public class extern_view extends View {
 			canvas.drawBitmap(c01, x[view_val], y[view_val]-c01.getHeight(), pnt);
 			canvas.drawText(tmp_s, x[view_val]+7*c_height, y[view_val]-c01.getHeight()/2, Cr);
 		}else if(view_val>=15 && view_val < dur){
-			canvas.drawBitmap(ci01, x[view_val]-ci01.getWidth(), posY[view_val]-ci01.getHeight(), pnt);
+			canvas.drawBitmap(ci01, x[view_val]-ci01.getWidth(), y[view_val]-ci01.getHeight(), pnt);
 			canvas.drawText(tmp_s, x[view_val]-ci01.getWidth()+7*c_height, y[view_val]-c01.getHeight()/2, Cr);
 		}
 	}
@@ -420,8 +419,11 @@ public class extern_view extends View {
 		Rect src = new Rect(0,0,map001.getWidth(),map001.getHeight());
 		Rect dst = new Rect(0,0,MyApp.getDisplay().getWidth(),MyApp.getDisplay().getHeight());
 		
-		
-		if(GV.getSRM() == 1){
+		switch(GV.getSRM()){
+		case 1:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m1);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm1);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm1);
 			
 			int dis_ori = 1;  
 			if(dis_ori == 1){
@@ -1038,37 +1040,66 @@ public class extern_view extends View {
 			
 			canvas.drawBitmap(map006, 60*c_width, 115*c_height, pnt);
 //			canvas.drawText("차트 설명 보기", width - 200, height-20, pnt2);
+				
+			if(sub_menu == 1){
+				canvas.drawRect(200*c_width, title_position-29*c_height, width-20*c_width, title_position+270*c_height, _Drawable2.getPaint());
+				canvas.drawText("분기 EPS", 214*c_width, title_position, W_24);
+				canvas.drawText("분기 EPS & 매출액", 214*c_width, title_position+50*c_height, W_24);
+				canvas.drawText("매출액 & 영업이익 & 순이익", 214*c_width, title_position+100*c_height, W_24);
+				canvas.drawText("영업이익률 & 순이익률", 214*c_width, title_position+150*c_height, W_24);
+				canvas.drawText("영업외손익률", 214*c_width, title_position+200*c_height, W_24);
+				canvas.drawBitmap(Icon_m, width-20*c_width-Icon_m.getWidth(), title_position+270*c_height-Icon_m.getHeight(), pnt);
+			}
 			
-		}
-		Bitmap Icon_m = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.p);
-		
-		if(sub_menu == 1){
-			canvas.drawRect(200*c_width, title_position-29*c_height, width-20*c_width, title_position+270*c_height, _Drawable2.getPaint());
-			canvas.drawText("분기 EPS", 214*c_width, title_position, W_24);
-			canvas.drawText("분기 EPS & 매출액", 214*c_width, title_position+50*c_height, W_24);
-			canvas.drawText("매출액 & 영업이익 & 순이익", 214*c_width, title_position+100*c_height, W_24);
-			canvas.drawText("영업이익률 & 순이익률", 214*c_width, title_position+150*c_height, W_24);
-			canvas.drawText("영업외손익률", 214*c_width, title_position+200*c_height, W_24);
-			canvas.drawBitmap(Icon_m, width-20*c_width-Icon_m.getWidth(), title_position+270*c_height-Icon_m.getHeight(), pnt);
-		}
-		
-		if(sub_menu == 2){
-			canvas.drawRect(20*c_width, title_position+13*c_height, 190*c_width, title_position+270*c_height, B_24);
-			canvas.drawRect(21*c_width, title_position+13*c_height, 189*c_width, title_position+269*c_height, W_24);
-//			_Drawable2.getPaint().setColor(0xff0071d1);
-//			canvas.drawText("수익성", 34, title_position+50, _Drawable2.getPaint());
-			_Drawable2.getPaint().setColor(0xff079200);
-			_Drawable2.getPaint().setTextSize(24*c_height);
-			canvas.drawText("안전성", 34*c_width, title_position+50*c_height, _Drawable2.getPaint());
-			_Drawable2.getPaint().setColor(0xffFFC600);
-			canvas.drawText("배당성", 34*c_width, title_position+100*c_height, _Drawable2.getPaint());
-			_Drawable2.getPaint().setColor(0xffA90000);
-			canvas.drawText("성장성", 34*c_width, title_position+150*c_height, _Drawable2.getPaint());
-			_Drawable2.getPaint().setColor(0xff5B00A9);
-			canvas.drawText("효율성", 34*c_width, title_position+200*c_height, _Drawable2.getPaint());
-			_Drawable2.getPaint().setColor(0xffA4A4A4);
-			canvas.drawText("가치평가", 34*c_width, title_position+250*c_height, _Drawable2.getPaint());
-//			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
+			if(sub_menu == 2){
+				canvas.drawRect(20*c_width, title_position+13*c_height, 190*c_width, title_position+270*c_height, B_24);
+				canvas.drawRect(21*c_width, title_position+13*c_height, 189*c_width, title_position+269*c_height, W_24);
+	//			_Drawable2.getPaint().setColor(0xff0071d1);
+	//			canvas.drawText("수익성", 34, title_position+50, _Drawable2.getPaint());
+				_Drawable2.getPaint().setColor(0xff079200);
+				_Drawable2.getPaint().setTextSize(24*c_height);
+				canvas.drawText("안전성", 34*c_width, title_position+50*c_height, _Drawable2.getPaint());
+				_Drawable2.getPaint().setColor(0xffFFC600);
+				canvas.drawText("배당성", 34*c_width, title_position+100*c_height, _Drawable2.getPaint());
+				_Drawable2.getPaint().setColor(0xffA90000);
+				canvas.drawText("성장성", 34*c_width, title_position+150*c_height, _Drawable2.getPaint());
+				_Drawable2.getPaint().setColor(0xff5B00A9);
+				canvas.drawText("효율성", 34*c_width, title_position+200*c_height, _Drawable2.getPaint());
+				_Drawable2.getPaint().setColor(0xffA4A4A4);
+				canvas.drawText("가치평가", 34*c_width, title_position+250*c_height, _Drawable2.getPaint());
+	//			canvas.drawBitmap(Icon_m, width-20-Icon_m.getWidth(), title_position+270-Icon_m.getHeight(), pnt);
+			}
+			break;
+		case 2:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m2);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm2);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm2);
+			
+			break;
+		case 3:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m3);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm3);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm3);
+			
+			break;
+		case 4:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m4);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm4);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm4);
+			
+			break;
+		case 5:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m5);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.sm5);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm5);
+			
+			break;
+		case 6:
+			map012 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.m6);
+			map013 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.submenu);
+			map014 = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.mm6);
+			
+			break;
 		}
 	}
 }

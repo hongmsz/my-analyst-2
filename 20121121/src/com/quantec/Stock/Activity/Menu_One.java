@@ -53,8 +53,6 @@ public class Menu_One extends Activity {
     float x1, y1, x2, y2;
     int tmp_v;
     int duration;
-	float[] f_sort, f_origin, f_sort2, f_origin2;
-	long[] tmp_sort, tmp_origin, tmp_sort2, tmp_origin2, tmp_sort3, tmp_origin3;
     
 //	long[] tmp_002;
     //////////////////////////////////////////////
@@ -108,7 +106,13 @@ public class Menu_One extends Activity {
 		
 		test = new extern_view(this);
 		
-		test.mTitle = "수익성";
+
+		test.t_sub_title[0] = "분기 EPS";
+		test.t_sub_title[1] = "분기 EPS & 매출액";
+		test.t_sub_title[2] = "매출액&영업이익&순이익";
+		test.t_sub_title[3] = "영업이익률 & 순이익률";
+		test.t_sub_title[4] = "영업외손익률";
+		
 				
 		test.width = GV.getDisplay().getWidth();
 		test.height= GV.getDisplay().getHeight();
@@ -139,7 +143,16 @@ public class Menu_One extends Activity {
 		Cmenu5 = new Intent(this, Menu_Five.class);
 		Cmenu6 = new Intent(this, Menu_Six.class);
 		
+
+		test.map012 = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.m1);
+		test.map013 = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.sm1);
+		test.map014 = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.mm1);
+		
+		test.Icon_m = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.p);
+		
 		bld = new AlertDialog.Builder(this);
+		
+		test.VIEW_DEPTH = MAX_VIEW_DEPTH;
 		
 		test.posX = new float[(GV.getDuration()+1)];
 		test.posY = new float[(GV.getDuration()+1)];
@@ -173,20 +186,6 @@ public class Menu_One extends Activity {
 		test.f_origin = new float[GV.getDuration()];
 		test.f_sort2 = new float[GV.getDuration()];
 		test.f_origin2 = new float[GV.getDuration()];
-		
-
-		f_sort = new float[GV.getDuration()];
-		f_origin = new float[GV.getDuration()];
-		f_sort2 = new float[GV.getDuration()];
-		f_origin2 = new float[GV.getDuration()];
-		
-		tmp_sort = new long[(GV.getDuration()+1)];
-		tmp_sort2 = new long[(GV.getDuration()+1)];
-		tmp_origin = new long[(GV.getDuration()+1)];
-		tmp_origin2 = new long[(GV.getDuration()+1)];
-		tmp_sort3 = new long[(GV.getDuration()+1)];
-		tmp_origin3 = new long[(GV.getDuration()+1)];
-		
 		
 //		tmp_002 = new long[GV.getDuration()];
 		
@@ -290,18 +289,22 @@ public class Menu_One extends Activity {
 								if(tmp_v < 0)
 									GV.setSRV(MAX_VIEW_DEPTH-1);
 							}else if( y1 <= GV.getDisplay().getHeight()*0.8f && y1 >= GV.getDisplay().getHeight()*0.25f){
-								if(test.opt_dur == 0){
+								switch(test.opt_dur){
+								case 0:
 									if(x1 >= test.width*0.075f && x1 <= GV.getDisplay().getWidth()-test.width*0.075f){
 										test.view_val = (int) ((float)(x1-test.width*0.075f /*  */+((float)(test.width-test.width*0.15f)/(float)((test.duration+1)*12-1)*test.dur2) )*39.0f/(float)(GV.getDisplay().getWidth()-test.width*0.1875f));
 									}
-								}else if(test.opt_dur == 1){
+									break;
+								case 1:
 									if(x1 >= test.width*0.075f && x1 <= GV.getDisplay().getWidth()-test.width*0.075f){
 										test.view_val = (int) ((float)(x1-test.width*0.075f/*  */+((float)(test.width-test.width*0.15f)/(float)((test.duration+1)*12-1)*test.dur2))*19.0f/(float)(GV.getDisplay().getWidth()-test.width*0.1875f));
 									}
-								}else if(test.opt_dur == 2){
+									break;
+								case 2:
 									if(x1 >= test.width*0.075f && x1 <= GV.getDisplay().getWidth()-test.width*0.075f){
 										test.view_val = (int) ((float)(x1-test.width*0.075f/*  */+((float)(test.width-test.width*0.15f)/(float)((test.duration+1)*12-1)*test.dur2))*11.0f/(float)(GV.getDisplay().getWidth()-test.width*0.1875f));
 									}
+									break;
 								}
 							}
 						}
